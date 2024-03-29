@@ -1,0 +1,49 @@
+/* 스타일 시트 styles.css */
+
+/* 전체 body 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* 각 폼의 스타일 */
+form {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+}
+
+/* 각 라벨의 스타일 */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* 각 입력 필드의 스타일 */
+input[type="text"] {
+    width: calc(100% - 10px);
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* submit 버튼의 스타일 */
+button[type="submit"] {
+    background-color: #007bff;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+/* submit 버튼 호버 효과 */
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,1685 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+
+</title>
+    <style type="text/css">
+        .commSetting {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .commSetting div {
+                width: 33%;
+                padding: 5px 1px;
+                text-align: center;
+            }
+
+        .posTaking {
+            display: table;
+        }
+
+            .posTaking>div {                
+                display: table-cell;
+                text-align: center;
+            }
+
+            .posTaking>div>div {
+                padding: 6px 0;
+            }
+    </style>
+	<link href="./portal(1).css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="./jquery-my.min.js"></script>
+    <script type="text/javascript" src="./Shared.js"></script>
+    <script type="text/javascript">
+        function toggleSetting(setting, ctrl) {
+            var stt = document.getElementById(setting);
+            if (stt.style.display == 'none') {
+                stt.style.display = '';
+                ctrl.className = "accordion2";
+            }
+            else {
+                stt.style.display = 'none';
+                ctrl.className = "accordion";
+            }
+        }
+        
+        function PopupCenter(pageURL, title, w, h) {
+            var left = (screen.width / 2) - (w / 2);
+            var top = (screen.height / 2) - (h / 2);
+            var targetWin = window.open(pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+        }
+
+        $(document).ready(function () {
+            $(document).find("[hiderow=1]").each(function () {
+                $(this).closest('tr').hide();
+            });
+
+            $(".commSetting").find("[hideComm=1]").each(function () {
+                $(this).closest('div').hide();
+            });
+
+            $(".commSetting").each(function () { //add empty div if number of commission setting not multiply of 3
+                var cntShownDiv = 0;
+                $(this).find('div').each(function () {
+                    if ($(this).css('display') !== 'none') {
+                        cntShownDiv++;
+                    }
+                })
+
+                var cntAddDiv = Math.ceil(cntShownDiv / 3.0) * 3 - cntShownDiv;
+
+                for (var i = 0; i < cntAddDiv; i++)
+                    $(".commSetting").append("<div class='SetBorderB SetBorderR'>&nbsp;</div>")
+            });
+
+            $(".posTaking").find("[hidePT=1]").each(function () {
+                $(this).closest('div').parent().closest('div').hide();
+            });
+
+            $('#lblCommissionRAQ').closest('tr').parent().closest('tr').hide().next().hide();
+
+        
+            $('*[id*=ControlLimit]').each(function () {
+                $(this).closest('tr').hide();
+            });
+            
+        });
+    </script>
+</head>
+<body class="Background2" leftmargin="5" topmargin="5" rightmargin="5" marginheight="0" marginwidth="0">
+    <form name="form1" method="post" id="form1">
+
+
+    
+
+    <div id="page_main">
+        <div id="header_main">Balance</div>
+        <table cellspacing="0" cellpadding="0" width="60%" align="left" border="0">
+        <!---------------------------------------------------------------------- CONTENT BEGIN ---------------------------------------------------------------------->
+            <tbody><tr><td>&nbsp;</td></tr>
+            <tr><td height="22px" class="RptHeader">
+                &nbsp;
+                <span class="ENG">Agent Balance Information</span>
+            </td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>
+                <!---------------------------------------------------------------------- PROFILE AREA BEGIN ---------------------------------------------------------------------->
+                <div id="panAg">
+	
+                    </div><table cellspacing="0" cellpadding="0" width="900px" border="0">
+                <tbody>
+                    <!------------------------------------------ SHARE HOLDER ------------------------------------------>
+                    
+                    <!------------------------------------------ SUPER SENIOR ------------------------------------------>
+                    
+                    <!------------------------------------------ PARTNER ------------------------------------------>
+                    
+                    <!------------------------------------------ AGENT ------------------------------------------>
+                    <tr>
+                        <td>
+                            <div id="panaNickName">
+		
+                                </div><table style="border-collapse: collapse; vertical-align:middle" bordercolor="#a0a0a0" cellspacing="1" cellpadding="0" width="400px" align="left" border="1">
+                                <tbody><tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;User Name
+                                    </td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaUserName" class="Bold">Svyyss</span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Nick Name
+                                    </td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaNickName" class="Bold">Svyyss</span>&nbsp;
+                                    </td>
+                                </tr>
+                                
+	
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Cash Balance</td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaCashBalance" class="Bold"><span class="Positive">0.00</span></span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Account Balance</td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaAccBalance" class="Bold"><span class="Positive">0.00</span></span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Members Balance</td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaTotalBalance" class="Bold"><span class="Positive">0.00</span></span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Total Outstanding</td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaTotalOutstanding" class="Bold"><span class="Positive">0</span> (0 bets)</span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Remaining Credit</td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaCredit" class="Bold"><span class="Positive">1,000,000</span></span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Total Agent Credit</td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaTotalAgentCredit" class="Bold"><span class="Positive">0</span></span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Total Member Credit</td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaTotalMemberCredit" class="Bold"><span class="Positive">20,000</span></span>&nbsp;
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>     
+                        <td valign="top">
+                            <table style="border-collapse: collapse" bordercolor="#a0a0a0" cellspacing="1" cellpadding="0" width="400px" align="right" border="1">
+                                <tbody><tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Currency</td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaCurrency" class="Bold">MYR</span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Credit Limit</td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaTotalGivenCredit" class="Bold"><span class="Positive">1,000,000</span></span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2" style="display: none;">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Control Limit</td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaControlLimit" class="Bold"><span class="Positive">0</span></span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Min/Max Bet</td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaMinBet" class="Bold"><span class="Positive">5</span> / <span class="Positive">100,000</span></span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Minimum Share&nbsp;(HDP/OU/OE)
+                                    </td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaMinShares" class="Bold">90%</span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Minimum Share&nbsp;(1X2/Outright)
+                                    </td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaMinSharesX12" class="Bold">90%</span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Minimum Share&nbsp;((Parlay/Correct Score/Total Goal))
+                                    </td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaMinSharesPar" class="Bold">90%</span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Total Agent Count</td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaTotalAgentCount" class="Bold">0</span>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr class="bg_eb2">
+                                    <td height="22px" class="Acc_leftTD">
+                                        &nbsp;Total Member Count</td>
+                                    <td class="b r Acc_rightTD">
+                                        &nbsp;<span id="lblaTotalMemberCount" class="Bold">1</span>&nbsp;
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    
+
+                    <!------------------------------------------ SUBAGENT ------------------------------------------>
+                    
+                    <!------------------------------------------ MEMBER ------------------------------------------>
+                    
+                    <!------------------------------------------ END ------------------------------------------>
+                </tbody>
+                </table>
+                <!---------------------------------------------------------------------- PROFILE AREA END ---------------------------------------------------------------------->
+            </td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>
+                <!---------------------------------------------------------------------- MESSAGE AREA BEGIN ---------------------------------------------------------------------->
+                <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                    <tbody><tr>
+                        <td align="left">
+                            <div id="header_main2">
+                                <a class="Acc_msgHead"  target="fraMain">Messages</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td>
+                        <!------------------------------------------ Message Content BEGIN ------------------------------------------>
+                        <table cellspacing="0" cellpadding="0" width="100%" align="left" border="1" style="border-collapse:collapse; border: 1px solid #CCCEB9;">
+                        <tbody><tr><td>
+                            <table cellspacing="0" cellpadding="3" width="100%" align="center" border="0">
+                                <tbody><tr>
+                                    <td align="center">
+                                    <table cellspacing="0" cellpadding="3" align="Center" rules="all" border="1" id="g" style="border-color:#ADADAD;width:100%;border-collapse:collapse;">
+	<tbody><tr class="GridHeader" align="center" style="white-space:nowrap;">
+		<td style="width:100px;">
+                                                    Date/Time
+                                                </td><td>
+                                                    Messages
+                                                </td>
+	</tr><tr class="Acc_msgGridItem" align="center">
+		<td class="Acc_msgTbl" style="width:100px;">
+                                                    25/12 11:00:00 am
+                                                </td><td class="Acc_msgTbl" align="left" valign="top">
+                                                    <font color="red"><font size="+1">Dear Valued Customer, We have important news for all our customers betting at M8BET. 27th December 2023 has been launching M9BET that will soon replace.All the functionality and Login details of the bookmaker remains the same.
+                                                </font></font></td>
+	</tr><tr class="Acc_msgGridAltItem" align="center">
+		<td class="Acc_msgTbl" style="width:100px;">
+                                                    25/10 3:55:00 pm
+                                                </td><td class="Acc_msgTbl" align="left" valign="top">
+                                                    <font color="red"><font size="+1">Dear Valued Customer: [Jili/Joker/King Maker/Live22] New Product Game are launch. Kindly click on the "Slot Games" event to place your bets now. Thank You For Your Continued Support For Our Company!
+                                                </font></font></td>
+	</tr><tr class="Acc_msgGridItem" align="center">
+		<td class="Acc_msgTbl" style="width:100px;">
+                                                    21/10 4:18:00 pm
+                                                </td><td class="Acc_msgTbl" align="left" valign="top">
+                                                    <font color="red"><font size="+1">Dear Valued Customer: Our Company Will Launch New Slot Games [Jili/Joker/Live22/Kingmaker] on 24-October-2023(14:00 GMT+8), Kindly Preset Now Your Position Taking Setting. Will Be Notified After The Official Launch. Thank You For Your Continued Support For Our Company!!!
+                                                </font></font></td>
+	</tr><tr class="Acc_msgGridAltItem" align="center">
+		<td class="Acc_msgTbl" style="width:100px;">
+                                                    16/10 1:15:00 pm
+                                                </td><td class="Acc_msgTbl" align="left" valign="top">
+                                                    <font color="red"><font size="+1">Dear valued customers, Hereby to inform you that to increase security and protect your account, you are required to login only by Nickname. if you have any questions, please contact customer service.
+                                                </font></font></td>
+	</tr><tr class="Acc_msgGridItem" align="center">
+		<td class="Acc_msgTbl" style="width:100px;">
+                                                    08/10 10:46:00 pm
+                                                </td><td class="Acc_msgTbl" align="left" valign="top">
+                                                    <font color="red"><font size="+1">Dear valued customers, Hereby to inform you that once the company found any of the “Abnormal Bets”, the company has the right to void the settled bets in the past 7 days. After the bets are deleted, the company will not be responsible for all the losses caused. Thank you for your kind understanding.
+
+                                                </font></font></td>
+	</tr><tr class="Acc_msgGridAltItem" align="center">
+		<td class="Acc_msgTbl" style="width:100px;">
+                                                    17/07 3:05:00 pm
+                                                </td><td class="Acc_msgTbl" align="left" valign="top">
+                                                    <font color="red"><font size="+1">Dear Valued Customer : [WonCasino/PGsoft/BNG/MG/918kiss] New Product Game are launch on 17-July-2023(14:00 GMT+8). Kindly click on the "Live Casino &amp; Slot Games" event to place your bets now. Thank You For Your Continued Support For Our Company!
+                                                </font></font></td>
+	</tr><tr class="Acc_msgGridItem" align="center">
+		<td class="Acc_msgTbl" style="width:100px;">
+                                                    13/07 2:27:00 pm
+                                                </td><td class="Acc_msgTbl" align="left" valign="top">
+                                                    <font color="red"><font size="+1">Dear Valued Customer: Our Company Will Launch [WonCasino/PGsoft/BNG/MG/918kiss] on 17-July-2023(14:00 GMT+8), Kindly Preset Now Your Position Taking and Commission Setting. Will Be Notified After The Official Launch.Thank You For Your Continued Support For Our Company!!!
+                                                </font></font></td>
+	</tr><tr class="Acc_msgGridAltItem" align="center">
+		<td class="Acc_msgTbl" style="width:100px;">
+                                                    25/05 10:18:00 am
+                                                </td><td class="Acc_msgTbl" align="left" valign="top">
+                                                    <font color="red"><font size="+1">Dear Valued Customer: [YeeBet &amp; Pragmatic]Live Casino are launch on 25-May-2023(14:00 GMT+8). Kindly click on the "Live Casino" event to place your bets now. Thank You For Your Continued Support For Our Company!!!
+                                                </font></font></td>
+	</tr>
+</tbody></table>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td></tr>
+                        </tbody></table>
+                        <!------------------------------------------ Message Content END ------------------------------------------>
+                    </td></tr>
+                </tbody></table>
+                <!---------------------------------------------------------------------- MESSAGE AREA END ---------------------------------------------------------------------->
+            </td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>
+                <!---------------------------------------------------------------------- SHARE AREA BEGIN ---------------------------------------------------------------------->
+                <div id="panRCA">
+	
+                </div><div id="panPERDANA">
+	
+                </div><div id="panRCL">
+	
+                </div><div id="panRCQ">
+	
+                </div><div id="panRBU">
+	
+                </div><div id="pan4D">
+	
+                </div><table cellspacing="0" cellpadding="3" width="100%" align="center" border="0">
+                <tbody>
+                <!----------------------------------------------------------------------------------------------------------------------------------------------------------->
+                <!---------------------------------------------------------------------- DETAILS BEGIN ---------------------------------------------------------------------->
+
+                
+
+                <tr><td>
+                <!--------------------------------------------------------------------------- SPORTSBOOK --------------------------------------------------------------------------->
+                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr><td>
+                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="accordion" onclick="toggleSetting(&#39;trSports&#39;,this)">
+                        <tbody><tr>
+                            <td align="left">SPORTSBOOK</td>
+                        </tr>
+                        </tbody></table>
+                    </td></tr>
+                    <tr id="trSports" style="display:none;"><td>
+                    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                        <!------------------------------------- Commission Setting ------------------------------------->
+                        <tbody><tr><td>
+                            <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tbody><tr class="SetGridHeader">
+	                                <td align="center">COMMISSION SETTING</td>
+                                </tr>
+                                                                
+                                <tr><td>
+                                    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tbody><tr class="SetGridItem" align="center">
+	                                    <td nowrap="nowrap" width="25%" class="SetBorderL SetBorderB SetBorderR" id="tdCommissionA">
+	                                        Group A
+	                                        &nbsp;<span id="lblCommissionA" style="display:inline-block;width:65px;">0.35%</span>
+	                                    </td>
+	                                    <td nowrap="nowrap" width="25%" class="SetBorderB SetBorderR" id="tdCommissionB">
+	                                        Group B
+	                                        &nbsp;<span id="lblCommissionB" style="display:inline-block;width:65px;">0.5%</span>
+	                                    </td>
+	                                    <td nowrap="nowrap" width="25%" class="SetBorderB SetBorderR" id="tdCommissionC">
+	                                        Group C
+	                                        &nbsp;<span id="lblCommissionC" style="display:inline-block;width:65px;">0.75%</span>
+	                                    </td>
+                                        <td nowrap="nowrap" width="25%" class="SetBorderB SetBorderR" id="tdCommissionD">
+                                            Group D
+	                                &nbsp;<span id="lblCommissionD" style="display:inline-block;width:65px;">1%</span>
+                                        </td>
+                                    </tr>
+                                    </tbody></table>
+                                </td></tr>
+                                <tr>
+                                    <td>
+                                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                            <tbody><tr class="SetGridItem" align="center">
+	                                            <td nowrap="nowrap" width="20%" class="SetBorderL SetBorderB SetBorderR">
+	                                                1X2/Outright
+	                                                &nbsp;<span id="lblCommissionX12" style="display:inline-block;width:65px;">1%</span>
+	                                            </td>
+                                                <td id="tdCommissionE" nowrap="nowrap" width="20%" class="SetBorderB SetBorderR">
+                                                    Group E
+	                                        &nbsp;<span id="lblCommissionE" style="display:inline-block;width:65px;">1.1%</span>
+                                                </td>
+
+                                                <td id="tdCommissionF" nowrap="nowrap" width="20%" class="SetBorderB SetBorderR">
+                                                    Group F
+	                                        &nbsp;<span id="lblCommissionF" style="display:inline-block;width:65px;">1.2%</span>
+                                                </td>
+
+                                                <td id="tdCommissionG" nowrap="nowrap" width="20%" class="SetBorderB SetBorderR">
+                                                    Group G
+	                                        &nbsp;<span id="lblCommissionG" style="display:inline-block;width:65px;">0%</span>
+                                                </td>
+
+                                                <td nowrap="nowrap" width="20%" class="SetBorderB SetBorderR">
+                                                    Parlay Comm
+	                                        &nbsp;<span id="lblCommissionPar" style="display:inline-block;width:65px;">1%</span>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                                <tr><td>
+                                    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tbody><tr class="SetGridItem" align="center">
+	                                    <td id="tdCommission" nowrap="nowrap" width="37%" class="SetBorderL SetBorderB SetBorderR">
+	                                        Member Commission (HDP/OU/OE)
+	                                        &nbsp;<span id="lblCommission" style="display:inline-block;width:80px;">0%</span>
+	                                    </td>
+
+	                                    <td id="tdCommission4" nowrap="nowrap" width="38%" class="SetBorderR SetBorderB">
+	                                        Member Commission 4 (HDP/OU/OE, Best Spread 4%)
+	                                        &nbsp;<span id="lblCommission4" style="display:inline-block;width:80px;">0.25%</span>
+	                                    </td>
+
+	                                    <td id="tdCommissionMM" nowrap="nowrap" width="25%" class="SetBorderR SetBorderB">
+	                                        Myanmar
+	                                        &nbsp;<span id="lblCommissionMM" style="display:inline-block;width:80px;">0%</span>
+	                                    </td>
+
+                                    </tr>
+                                    </tbody></table>
+                                </td></tr>
+                                <tr><td>
+                                    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                        <tbody><tr class="SetGridItem" align="center">
+	                                        <td width="15%" rowspan="2" class="SetBorderL">
+	                                            Step Comm&nbsp;
+                                            </td>
+                                            <td>
+                                                2 match
+                                                &nbsp;<span id="lblCommissionPas02">0%</span>
+                                            </td>
+                                            <td>
+                                                3-4 match
+                                                &nbsp;<span id="lblCommissionPas03">0%</span>
+                                            </td>
+                                            <td class="SetBorderR">
+                                                5-6 match
+                                                &nbsp;<span id="lblCommissionPas05">0%</span>
+                                            </td>
+                                        </tr>
+                                        <tr class="SetGridItem" align="center">
+                                            <td>
+                                                7-8 match
+                                                &nbsp;<span id="lblCommissionPas07">0%</span>
+                                            </td>
+                                            <td>
+                                                9-10 match
+                                                &nbsp;<span id="lblCommissionPas09">0%</span>
+                                            </td>
+                                            <td class="SetBorderR">
+                                                11-12 match
+                                                &nbsp;<span id="lblCommissionPas11">0%</span>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </td></tr>                                
+                            </tbody></table>
+                        </td></tr>
+                        <!------------------------------------- Limit Setting ------------------------------------->
+                        <tr><td>
+                            <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                <tbody><tr class="SetGridHeader">
+	                                <td colspan="3" align="center">LIMIT SETTING</td>
+                                </tr>
+                                <tr class="SetGridItem" align="center">
+	                                <td width="40%" align="left" class="SetBorderL SetBorderB">&nbsp;</td>
+	                                <td width="30%" class="SetBorderL SetBorderB">Max Bet</td>
+	                                <td width="30%" class="SetBorderL SetBorderB SetBorderR">Max Per Match</td>
+                                </tr>
+                                <tr class="SetGridItem" align="center">
+	                                <td align="left" class="SetBorderL SetBorderB">
+	                                    HDP/OU/OE
+	                                </td>
+	                                <td class="SetBorderL SetBorderB">
+                                        <span id="lblTransLimit" style="display:inline-block;width:80px;">5,000</span>
+	                                </td>
+	                                <td class="SetBorderL SetBorderB SetBorderR">
+                                        <span id="lblBeforeRun" style="display:inline-block;width:80px;">5,000</span>
+	                                </td>
+                                </tr>
+                                <tr class="SetGridItem" align="center">
+	                                <td align="left" class="SetBorderL SetBorderB">
+	                                    Mix Parlay
+	                                </td>
+	                                <td class="SetBorderL SetBorderB">
+                                        <span id="lblMaxPar" style="display:inline-block;width:80px;">2,000</span>
+	                                </td>
+	                                <td class="SetBorderL SetBorderB SetBorderR">
+                                        <span id="lblParLimitPerCombi" style="display:inline-block;width:80px;">2,000</span>
+	                                </td>
+                                </tr>
+                                <tr class="SetGridItem" align="center">
+	                                <td align="left" class="SetBorderL SetBorderB">
+	                                    Correct Score
+	                                </td>
+	                                <td class="SetBorderL SetBorderB">
+                                        <span id="lblMaxCS" style="display:inline-block;width:80px;">2,000</span>
+	                                </td>
+	                                <td class="SetBorderL SetBorderB SetBorderR">
+                                        <span id="lblMatchLimitCS" style="display:inline-block;width:80px;">2,000</span>
+	                                </td>
+                                </tr>
+                                <tr class="SetGridItem" align="center">
+	                                <td align="left" class="SetBorderL SetBorderB">
+	                                    Step
+	                                </td>
+	                                <td class="SetBorderL SetBorderB">
+                                        <span id="lblMaxPas" style="display:inline-block;width:80px;">2,000</span>
+	                                </td>
+	                                <td class="SetBorderL SetBorderB SetBorderR">
+                                        <span id="lblPasLimitPerCombi" style="display:inline-block;width:80px;">2,000</span>
+	                                </td>
+                                </tr>
+                                
+                            </tbody></table>
+                        </td></tr>
+                        <!------------------------------------- Position Taking ------------------------------------->
+                        <tr><td>
+                            <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tbody><tr class="SetGridHeader">
+	                                <td align="center">POSITION TAKING</td>
+                                </tr>
+                                <tr><td>                            
+                                    <table width="100%" cellspacing="0" cellpadding="0" align="left">
+                                    <tbody><tr><td>
+                                        <table width="100%" height="100%" cellspacing="0" cellpadding="5">
+                                            <tbody><tr align="center">
+                                                <td width="25%" class="SetPosBg1 SetBorderL SetBorderB">&nbsp;</td>
+                                                <td width="20%" class="SetPosBg2 SetBorderL SetBorderB">
+                                                    HDP/OU/OE
+                                                </td>
+                                                <td width="20%" class="SetPosBg3 SetBorderL SetBorderB">
+                                                    1X2/Outright
+                                                </td>
+                                                <td width="35%" class="SetPosBg3 SetBorderL SetBorderB">
+                                                    Parlay/Correct Score/Total Goal/Half Time Full Time/First Goal Last Goal
+                                                </td>
+                                                <td width="14%" class="SetPosBg3 SetBorderL SetBorderB SetBorderR">
+                                                    Step
+                                                </td>                                                
+                                            </tr>
+                                            <tr align="center">
+                                                <td class="SetPosBg1 SetBorderL SetBorderB">Master Preset</td>
+                                                <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                    <span id="lblMaxShares" style="display:inline-block;width:65px;">90%</span>
+                                                </td>
+                                                <td class="SetPosBg3 SetBorderL SetBorderB">
+                                                    <span id="lblMaxSharesX12" style="display:inline-block;width:65px;">90%</span>
+                                                </td>
+                                                <td class="SetPosBg3 SetBorderL SetBorderB">
+                                                    <span id="lblMaxSharesPar" style="display:inline-block;width:65px;">90%</span>
+                                                </td>
+                                                <td class="SetPosBg3 SetBorderL SetBorderB SetBorderR">
+                                                    <span id="lblMaxSharesPas" style="display:inline-block;width:65px;">90%</span>
+                                                </td>                                                
+                                            </tr>
+                                           
+                                            <tr align="center">
+                                                <td class="SetPosBg1 SetBorderL SetBorderB">Min PT</td>
+                                                <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                    <span id="lblMinShares" style="display:inline-block;width:65px;">90%</span>
+                                                </td>
+                                                <td class="SetPosBg3 SetBorderL SetBorderB">
+                                                    <span id="lblMinSharesX12" style="display:inline-block;width:65px;">90%</span>
+                                                </td>
+                                                <td class="SetPosBg3 SetBorderL SetBorderB">
+                                                    <span id="lblMinSharesPar" style="display:inline-block;width:65px;">90%</span>
+                                                </td>
+                                                <td class="SetPosBg3 SetBorderL SetBorderB SetBorderR">
+                                                    <span id="lblMinSharesPas" style="display:inline-block;width:65px;">90%</span>
+                                                </td>                                                
+                                            </tr>
+                                        </tbody></table>
+                                    </td></tr>
+                                    </tbody></table>
+                                </td></tr>
+                            </tbody></table>
+                        </td></tr>
+                        <!------------------------------------- Position Taking END ------------------------------------->
+                    </tbody></table>
+                    </td></tr>
+                </tbody></table>
+                <!--------------------------------------------------------------------------- SPORTSBOOK END --------------------------------------------------------------------------->
+                </td></tr>
+
+                <tr><td>
+                <!--------------------------------------------------------------------------- IBC SPORTSBOOK --------------------------------------------------------------------------->
+                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr><td>
+                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="accordion" onclick="toggleSetting(&#39;trRCA&#39;,this)">
+                        <tbody><tr>
+                            <td align="left">NOVA88 SPORTSBOOK</td>
+                        </tr>
+                        </tbody></table>
+                    </td></tr>
+                    <tr id="trRCA" style="display:none;"><td>
+                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+					        <tbody><tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tbody><tr class="SetGridItem" style="display: none;">
+	                                    <td width="50%" align="left" class="SetBorderL SetBorderR">
+	                                        <span id="lblRCACasinoEnable" hiderow="1" style="display:inline-block;width:80px;"><span style="color:green;">Enable</span></span>
+	                                    </td>
+                                    </tr>
+                                </tbody></table>
+                            </td></tr>
+                            <!------------------------------------- Commission Setting ------------------------------------->
+			                <tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td colspan="4" align="center">COMMISSION SETTING</td>
+                                    </tr>
+                                    <tr class="SetGridItem" align="center">
+	                                    <td width="25%" class="SetBorderL SetBorderB">
+	                                        Sport Live
+	                                        &nbsp;<span id="lblCommissionRCA" style="display:inline-block;width:65px;">0.25%</span>
+	                                    </td>
+                                        <td width="25%" class="SetBorderL SetBorderB">
+	                                        Sport Today/Early
+	                                        &nbsp;<span id="lblCommissionRCB" style="display:inline-block;width:65px;">0.25%</span>
+	                                    </td>
+                                        <td width="25%" class="SetBorderL SetBorderB">
+	                                        Virtual Sport
+	                                        &nbsp;<span id="lblCommissionRCC" style="display:inline-block;width:65px;">0%</span>
+	                                    </td>
+                                        <td width="25%" class="SetBorderL SetBorderB SetBorderR">
+	                                        Number Game
+	                                        &nbsp;<span id="lblCommissionRCD" style="display:inline-block;width:65px;">0%</span>
+	                                    </td>
+                                    </tr>
+                                </tbody></table>
+                            </td></tr>
+							<!------------------------------------- Commission Setting END ------------------------------------->
+							
+							<!------------------------------------- Position Taking ------------------------------------->
+				            <tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td align="center">POSITION TAKING</td>
+                                    </tr>
+                                    <tr><td>                            
+                                        <table width="100%" cellspacing="0" cellpadding="0" align="left">
+                                        <tbody><tr><td>
+                                            <table width="100%" height="100%" cellspacing="0" cellpadding="5">
+                                                <tbody><tr align="center">
+                                                    <td width="20%" class="SetPosBg1 SetBorderL SetBorderB">&nbsp;</td>
+                                                    <td width="20%" class="SetPosBg2 SetBorderL SetBorderB">
+                                                        Sport Live
+                                                    </td>
+                                                    <td width="20%" class="SetPosBg2 SetBorderL SetBorderB">
+                                                        Sport Today/Early
+                                                    </td>
+                                                    <td width="20%" class="SetPosBg2 SetBorderL SetBorderB">
+                                                        Virtual Sport
+                                                    </td>
+                                                    <td width="20%" class="SetPosBg2 SetBorderL SetBorderB SetBorderR">
+                                                        Number Game
+                                                    </td>
+                                                </tr>
+                                                <tr align="center">
+                                                    <td class="SetPosBg1 SetBorderL SetBorderB">Master Preset</td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                        <span id="lblMaxSharesRCA" style="display:inline-block;width:65px;">84%</span>
+                                                    </td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                        <span id="lblMaxSharesRCB" style="display:inline-block;width:65px;">84%</span>
+                                                    </td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                        <span id="lblMaxSharesRCC" style="display:inline-block;width:65px;">84%</span>
+                                                    </td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB SetBorderR">
+                                                        <span id="lblMaxSharesRCD" style="display:inline-block;width:65px;">84%</span>
+                                                    </td>
+                                                </tr>
+                                                <tr align="center">
+                                                    <td class="SetPosBg1 SetBorderL SetBorderB">Min PT</td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                        <span id="lblMinSharesRCA" style="display:inline-block;width:65px;">84%</span>
+                                                    </td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                        <span id="lblMinSharesRCB" style="display:inline-block;width:65px;">84%</span>
+                                                    </td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                        <span id="lblMinSharesRCC" style="display:inline-block;width:65px;">84%</span>
+                                                    </td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB SetBorderR">
+                                                        <span id="lblMinSharesRCD" style="display:inline-block;width:65px;">84%</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        </td></tr>
+                                        </tbody></table>
+                                    </td></tr>
+                                </tbody></table>
+                            </td></tr>
+                            <!------------------------------------- Position Taking END ------------------------------------->
+							
+                            <!------------------------------------- Limit Setting ------------------------------------->
+                            <tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td align="center">LIMIT SETTING</td>
+                                    </tr>
+                                    <tr><td>                            
+                                        <table width="100%" cellspacing="0" cellpadding="0" align="left">
+                                        <tbody><tr><td>
+                                            <table width="100%" height="100%" cellspacing="0" cellpadding="5">
+                                                <tbody><tr class="SetGridItem">
+                                                    <td nowrap="nowrap" class="SetBorderL SetBorderB">Profile&nbsp;Sport Live</td>
+                                                    <td nowrap="nowrap" align="left" class="SetBorderL SetBorderB">
+                                                        <table class="Bold" cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                                                            <tbody><tr><td width="20px"><input name="optRCAProfile1" type="hidden" id="optRCAProfile1" value="1"></td><td width="50px">Limit A</td><td width="140px"><span id="lblRCAProfile1">Min = 10&nbsp;&nbsp;&nbsp;Max = 1000</span></td><td><img src="./small_tick.png" id="imgRCAProfile1"></td></tr>
+                                                            <tr><td><input name="optRCAProfile2" type="hidden" id="optRCAProfile2" value="2"></td><td>Limit B</td><td><span id="lblRCAProfile2">Min = 10&nbsp;&nbsp;&nbsp;Max = 5000</span></td><td><img src="./small_close.png" id="imgRCAProfile2"></td></tr>
+                                                            <tr><td><input name="optRCAProfile3" type="hidden" id="optRCAProfile3" value="3"></td><td>Limit C</td><td><span id="lblRCAProfile3">Min = 10&nbsp;&nbsp;&nbsp;Max = 10000</span></td><td><img src="./small_close.png" id="imgRCAProfile3"></td></tr>
+                                                            <tr><td><input name="optRCAProfile4" type="hidden" id="optRCAProfile4" value="4"></td><td>Limit D</td><td><span id="lblRCAProfile4">Min = 10&nbsp;&nbsp;&nbsp;Max = 20000</span></td><td><img src="./small_close.png" id="imgRCAProfile4"></td></tr>
+                                                            <tr><td><input name="optRCAProfile5" type="hidden" id="optRCAProfile5" value="5"></td><td>Limit E</td><td><span id="lblRCAProfile5">Min = 10&nbsp;&nbsp;&nbsp;Max = 50000</span></td><td><img src="./small_close.png" id="imgRCAProfile5"></td></tr>
+                                                            <tr><td><input name="optRCAProfile6" type="hidden" id="optRCAProfile6" value="6"></td><td>Limit F</td><td><span id="lblRCAProfile6">Min = 10&nbsp;&nbsp;&nbsp;Max = 100000</span></td><td><img src="./small_close.png" id="imgRCAProfile6"></td></tr>    
+                                                        </tbody></table>
+                                                    </td> 
+                                                    <td nowrap="nowrap" class="SetBorderL SetBorderB">Profile&nbsp;Sport Today/Early</td>
+                                                    <td nowrap="nowrap" align="left" class="SetBorderL SetBorderB SetBorderR">
+                                                        <table class="Bold" cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                                                            <tbody><tr><td width="20px"><input name="optRCBProfile1" type="hidden" id="optRCBProfile1" value="1"></td><td width="50px">Limit A</td><td width="140px"><span id="lblRCBProfile1">Min = 10&nbsp;&nbsp;&nbsp;Max = 5000</span></td><td><img src="./small_tick.png" id="imgRCBProfile1"></td></tr>
+                                                            <tr><td><input name="optRCBProfile2" type="hidden" id="optRCBProfile2" value="2"></td><td>Limit B</td><td><span id="lblRCBProfile2">Min = 10&nbsp;&nbsp;&nbsp;Max = 10000</span></td><td><img src="./small_close.png" id="imgRCBProfile2"></td></tr>
+                                                            <tr><td><input name="optRCBProfile3" type="hidden" id="optRCBProfile3" value="3"></td><td>Limit C</td><td><span id="lblRCBProfile3">Min = 10&nbsp;&nbsp;&nbsp;Max = 30000</span></td><td><img src="./small_close.png" id="imgRCBProfile3"></td></tr>
+                                                            <tr><td><input name="optRCBProfile4" type="hidden" id="optRCBProfile4" value="4"></td><td>Limit D</td><td><span id="lblRCBProfile4">Min = 10&nbsp;&nbsp;&nbsp;Max = 50000</span></td><td><img src="./small_close.png" id="imgRCBProfile4"></td></tr>
+                                                            <tr><td><input name="optRCBProfile5" type="hidden" id="optRCBProfile5" value="5"></td><td>Limit E</td><td><span id="lblRCBProfile5">Min = 10&nbsp;&nbsp;&nbsp;Max = 80000</span></td><td><img src="./small_close.png" id="imgRCBProfile5"></td></tr>
+                                                            <tr><td><input name="optRCBProfile6" type="hidden" id="optRCBProfile6" value="6"></td><td>Limit F</td><td><span id="lblRCBProfile6">Min = 10&nbsp;&nbsp;&nbsp;Max = 100000</span></td><td><img src="./small_close.png" id="imgRCBProfile6"></td></tr>    
+                                                        </tbody></table>
+                                                    </td> 
+                                                </tr>
+                                                <tr class="SetGridItem">
+                                                    <td nowrap="nowrap" class="SetBorderL SetBorderB">Profile&nbsp;Virtual Sport</td>
+                                                    <td nowrap="nowrap" align="left" class="SetBorderL SetBorderB">
+                                                        <table class="Bold" cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                                                            <tbody><tr><td width="20px"><input name="optRCCProfile1" type="hidden" id="optRCCProfile1" value="1"></td><td width="50px">Limit A</td><td width="140px"><span id="lblRCCProfile1">Min = 10&nbsp;&nbsp;&nbsp;Max = 150</span></td><td><img src="./small_tick.png" id="imgRCCProfile1"></td></tr>
+                                                            <tr><td><input name="optRCCProfile2" type="hidden" id="optRCCProfile2" value="2"></td><td>Limit B</td><td><span id="lblRCCProfile2">Min = 10&nbsp;&nbsp;&nbsp;Max = 300</span></td><td><img src="./small_close.png" id="imgRCCProfile2"></td></tr>
+                                                            <tr><td><input name="optRCCProfile3" type="hidden" id="optRCCProfile3" value="3"></td><td>Limit C</td><td><span id="lblRCCProfile3">Min = 10&nbsp;&nbsp;&nbsp;Max = 600</span></td><td><img src="./small_close.png" id="imgRCCProfile3"></td></tr>
+                                                            <tr><td><input name="optRCCProfile4" type="hidden" id="optRCCProfile4" value="4"></td><td>Limit D</td><td><span id="lblRCCProfile4">Min = 10&nbsp;&nbsp;&nbsp;Max = 900</span></td><td><img src="./small_close.png" id="imgRCCProfile4"></td></tr>
+                                                            <tr><td><input name="optRCCProfile5" type="hidden" id="optRCCProfile5" value="5"></td><td>Limit E</td><td><span id="lblRCCProfile5">Min = 10&nbsp;&nbsp;&nbsp;Max = 1200</span></td><td><img src="./small_close.png" id="imgRCCProfile5"></td></tr>
+                                                            <tr><td><input name="optRCCProfile6" type="hidden" id="optRCCProfile6" value="6"></td><td>Limit F</td><td><span id="lblRCCProfile6">Min = 10&nbsp;&nbsp;&nbsp;Max = 1500</span></td><td><img src="./small_close.png" id="imgRCCProfile6"></td></tr>    
+                                                        </tbody></table>
+                                                    </td> 
+                                                    <td nowrap="nowrap" class="SetBorderL SetBorderB">Profile&nbsp;Number Game</td>
+                                                    <td nowrap="nowrap" align="left" class="SetBorderL SetBorderB SetBorderR">
+                                                        <table class="Bold" cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                                                            <tbody><tr><td width="20px"><input name="optRCDProfile1" type="hidden" id="optRCDProfile1" value="1"></td><td width="50px">Limit A</td><td width="140px"><span id="lblRCDProfile1">Min = 10&nbsp;&nbsp;&nbsp;Max = 500</span></td><td><img src="./small_tick.png" id="imgRCDProfile1"></td></tr>
+                                                            <tr><td><input name="optRCDProfile2" type="hidden" id="optRCDProfile2" value="2"></td><td>Limit B</td><td><span id="lblRCDProfile2">Min = 10&nbsp;&nbsp;&nbsp;Max = 1000</span></td><td><img src="./small_close.png" id="imgRCDProfile2"></td></tr>
+                                                            <tr><td><input name="optRCDProfile3" type="hidden" id="optRCDProfile3" value="3"></td><td>Limit C</td><td><span id="lblRCDProfile3">Min = 10&nbsp;&nbsp;&nbsp;Max = 2000</span></td><td><img src="./small_close.png" id="imgRCDProfile3"></td></tr>
+                                                            <tr><td><input name="optRCDProfile4" type="hidden" id="optRCDProfile4" value="4"></td><td>Limit D</td><td><span id="lblRCDProfile4">Min = 10&nbsp;&nbsp;&nbsp;Max = 3000</span></td><td><img src="./small_close.png" id="imgRCDProfile4"></td></tr>
+                                                            <tr><td><input name="optRCDProfile5" type="hidden" id="optRCDProfile5" value="5"></td><td>Limit E</td><td><span id="lblRCDProfile5">Min = 10&nbsp;&nbsp;&nbsp;Max = 4000</span></td><td><img src="./small_close.png" id="imgRCDProfile5"></td></tr>
+                                                            <tr><td><input name="optRCDProfile6" type="hidden" id="optRCDProfile6" value="6"></td><td>Limit F</td><td><span id="lblRCDProfile6">Min = 10&nbsp;&nbsp;&nbsp;Max = 5000</span></td><td><img src="./small_close.png" id="imgRCDProfile6"></td></tr>    
+                                                        </tbody></table>
+                                                    </td> 
+                                                </tr>
+                                            </tbody></table>
+                                        </td></tr>
+                                        </tbody></table>
+                                    </td></tr>
+                                </tbody></table>
+                            </td></tr>                          
+                            <!------------------------------------- Limit Setting END ------------------------------------->
+                        </tbody></table>
+                    </td></tr>
+                </tbody></table>
+                <!--------------------------------------------------------------------------- IBC SPORTSBOOK END --------------------------------------------------------------------------->
+                </td></tr>
+                
+
+
+                <tr><td>
+                <!--------------------------------------------------------------------------- PERDANA 3D --------------------------------------------------------------------------->
+                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr><td>
+                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="accordion" onclick="toggleSetting(&#39;trPERDANA&#39;,this)">
+                        <tbody><tr>
+                            <td align="left">PERDANA 3D</td>
+                        </tr>
+                        </tbody></table>
+                    </td></tr>
+                    <tr id="trPERDANA" style="display:none;"><td>
+                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                            <!------------------------------------- Commission Setting ------------------------------------->
+                            <tbody><tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td colspan="2" align="center">COMMISSION SETTING</td>
+                                    </tr>
+                                    <tr class="SetGridItem" align="center">
+                                        <td class="SetBorderL SetBorderB">
+                                            BSOE &amp; AT/STRAIGHT
+                                            &nbsp;<span id="lblCommissionLAA" style="display:inline-block;width:65px;">0.25%</span>
+                                        </td>
+                                        <td class="SetBorderL SetBorderB SetBorderR">
+                                            3D
+                                            &nbsp;<span id="lblCommissionLAB" style="display:inline-block;width:65px;">30%</span>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </td></tr>
+                            <!------------------------------------- Limit Setting ------------------------------------->
+                            <tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td colspan="3" align="center">LIMIT SETTING</td>
+                                    </tr>
+                                    <tr class="SetGridItem" align="center">
+	                                    <td width="33%" align="left" class="SetBorderL SetBorderB">&nbsp;</td>
+	                                    <td width="33%" class="SetBorderL SetBorderB">Max Bet</td>
+	                                    <td width="33%" class="SetBorderL SetBorderB SetBorderR">Max Per Match</td>
+                                    </tr>
+                                    <tr class="SetGridItem" align="center">
+	                                    <td align="left" class="SetBorderL SetBorderB">BSOE &amp; AT/STRAIGHT</td>
+	                                    <td class="SetBorderL SetBorderB">
+	                                        <span id="lblMaxLAA" style="display:inline-block;width:80px;">1,000</span>
+	                                    </td>
+	                                    <td class="SetBorderL SetBorderB SetBorderR">
+                                            <span id="lblMatchLimitLAA" style="display:inline-block;width:80px;">1,000</span>
+	                                    </td>
+                                    </tr>
+                                    <tr class="SetGridItem" align="center">
+	                                    <td align="left" class="SetBorderL SetBorderB">3D</td>
+	                                    <td class="SetBorderL SetBorderB">
+	                                        <span id="lblMaxLAB" style="display:inline-block;width:80px;">1,000</span>
+	                                    </td>
+	                                    <td class="SetBorderL SetBorderB SetBorderR">
+                                            <span id="lblMatchLimitLAB" style="display:inline-block;width:80px;">1,000</span>
+	                                    </td>
+                                    </tr>
+                                </tbody></table>
+                            </td></tr>
+                            <!------------------------------------- Position Taking ------------------------------------->
+                            <tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td align="center">POSITION TAKING</td>
+                                    </tr>
+                                    <tr><td>                            
+                                        <table width="100%" cellspacing="0" cellpadding="0" align="left">
+                                        <tbody><tr><td>
+                                            <table width="100%" height="100%" cellspacing="0" cellpadding="5">
+                                                <tbody><tr align="center">
+                                                    <td width="40%" class="SetPosBg1 SetBorderL SetBorderB">&nbsp;</td>
+                                                    <td width="30%" class="SetPosBg2 SetBorderL SetBorderB">
+                                                        BSOE &amp; AT/STRAIGHT
+                                                    </td>
+                                                    <td width="30%" class="SetPosBg2 SetBorderL SetBorderB SetBorderR">
+                                                        3D
+                                                    </td>
+                                                </tr>
+                                                <tr align="center">
+                                                    <td class="SetPosBg1 SetBorderL SetBorderB">Master Preset</td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                        <span id="lblMaxSharesLAA" style="display:inline-block;width:65px;">87%</span>
+                                                    </td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB SetBorderR">
+                                                        <span id="lblMaxSharesLAB" style="display:inline-block;width:65px;">87%</span>
+                                                    </td>
+                                                </tr>
+                                                <tr align="center">
+                                                    <td class="SetPosBg1 SetBorderL SetBorderB">Min PT</td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                        <span id="lblMinSharesLAA" style="display:inline-block;width:65px;">87%</span>
+                                                    </td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB SetBorderR">
+                                                        <span id="lblMinSharesLAB" style="display:inline-block;width:65px;">87%</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        </td></tr>
+                                        </tbody></table>
+                                    </td></tr>
+                                </tbody></table>
+                            </td></tr>
+                            <!------------------------------------- Position Taking END ------------------------------------->
+                        </tbody></table>
+                    </td></tr>
+                </tbody></table>
+                <!--------------------------------------------------------------------------- PERDANA 3D END --------------------------------------------------------------------------->
+                </td></tr>
+                
+
+
+                <tr><td>
+                <!--------------------------------------------------------------------------- API2ALL CASINO --------------------------------------------------------------------------->
+                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr><td>
+                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="accordion" onclick="toggleSetting(&#39;trRCL&#39;,this)">
+                        <tbody><tr>
+                            <td align="left">NEW CASINO</td>
+                        </tr>
+                        </tbody></table>
+                    </td></tr>
+                    <tr id="trRCL" style="display:none;"><td>
+                        <div id="Panel3">
+		
+                            </div><table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+					        <tbody><tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tbody><tr class="SetGridItem" style="display: none;">
+	                                    <td width="50%" align="left" class="SetBorderL SetBorderR">
+	                                        <span id="lblRCLCasinoEnable" hiderow="1" style="display:inline-block;width:80px;"><span style="color:green;">Enable</span></span>
+	                                    </td>
+                                    </tr>
+                                </tbody></table>
+                            </td></tr>
+                            <!------------------------------------- Commission Setting ------------------------------------->
+			                <tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td align="center">COMMISSION SETTING</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="commSetting SetGridItem SetBorderL">
+                                                <div class="SetBorderB SetBorderR">
+                                                    WonCasino
+	                                                <br><span id="lblCommissionRDH">0.8%</span>
+                                                </div>
+                                                <div class="SetBorderB SetBorderR">
+                                                    CT CASINO
+	                                                <br><span id="lblCommissionYBA">0%</span>
+                                                </div>                                
+                                                <div class="SetBorderB SetBorderR">
+                                                    WM Casino
+	                                                <br><span id="lblCommissionRAO">0%</span>
+                                                </div>
+                                                <div class="SetBorderB SetBorderR"> 
+                                                    Sexy Baccarat
+	                                                <br><span id="lblCommissionRBF">0%</span>
+                                                </div>
+                                                <div class="SetBorderB SetBorderR" style="display: none;">
+                                                    Lucky Streak
+	                                                <br><span id="lblCommissionRCL" hidecomm="1">0.8%</span>
+                                                </div>
+                                                <div class="SetBorderB SetBorderR">
+                                                    FGG
+	                                                <br><span id="lblCommissionRCM">0%</span>
+                                                </div>
+                                                <div class="SetBorderB SetBorderR">
+                                                    Evolution Live Casino
+	                                                <br><span id="lblCommissionRCO">0%</span>
+                                                </div>
+                                                <div class="SetBorderB SetBorderR" style="display: none;">
+                                                    Dream Gaming
+	                                                <br><span id="lblCommissionRCP" hidecomm="1">0%</span>
+                                                </div>
+                                                <div class="SetBorderB SetBorderR" style="display: none;">
+                                                    YeeBet
+	                                                <br><span id="lblCommissionRDB" hidecomm="1">0.8%</span>
+                                                </div>
+                                                <div class="SetBorderB SetBorderR">
+                                                    Pragmatic Play Live
+	                                                <br><span id="lblCommissionRDC">0%</span>
+                                                </div>
+                                            <div class="SetBorderB SetBorderR">&nbsp;</div><div class="SetBorderB SetBorderR">&nbsp;</div></div>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </td></tr>
+							<!------------------------------------- Commission Setting END ------------------------------------->						
+							
+                            <!------------------------------------- Limit Setting ------------------------------------->
+                            <tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td align="center">LIMIT SETTING</td>
+                                    </tr>
+                                    <tr><td>                            
+                                        <table width="100%" cellspacing="0" cellpadding="0" align="left">
+                                        <tbody><tr><td>
+                                            <table width="100%" height="100%" cellspacing="0" cellpadding="5">
+                                                <tbody><tr class="SetGridItem">
+                                                    <td nowrap="nowrap" class="SetBorderL SetBorderB">Profile</td>
+                                                    <td nowrap="nowrap" align="left" class="SetBorderL SetBorderB SetBorderR">
+                                                        <table class="Bold" cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                                                            <tbody><tr><td width="20px"><input name="optRCLProfile1" type="hidden" id="optRCLProfile1" value="1"></td><td width="50px">Limit A</td><td width="140px"><span id="lblRCLProfile1">Max Bet = 1000&nbsp;&nbsp;&nbsp;Max Win = 10000</span></td><td><img src="./small_tick.png" id="imgRCLProfile1"></td></tr>
+                                                            <tr><td><input name="optRCLProfile2" type="hidden" id="optRCLProfile2" value="2"></td><td>Limit B</td><td><span id="lblRCLProfile2">Max Bet = 3000&nbsp;&nbsp;&nbsp;Max Win = 30000</span></td><td><img src="./small_close.png" id="imgRCLProfile2"></td></tr>
+                                                            <tr><td><input name="optRCLProfile3" type="hidden" id="optRCLProfile3" value="3"></td><td>Limit C</td><td><span id="lblRCLProfile3">Max Bet = 5000&nbsp;&nbsp;&nbsp;Max Win = 50000</span></td><td><img src="./small_close.png" id="imgRCLProfile3"></td></tr>
+                                                            <tr><td><input name="optRCLProfile4" type="hidden" id="optRCLProfile4" value="4"></td><td>Limit D</td><td><span id="lblRCLProfile4">Max Bet = 10000&nbsp;&nbsp;&nbsp;Max Win = 100000</span></td><td><img src="./small_close.png" id="imgRCLProfile4"></td></tr>
+                                                            <tr><td><input name="optRCLProfile5" type="hidden" id="optRCLProfile5" value="5"></td><td>Limit E</td><td><span id="lblRCLProfile5">Max Bet = 20000&nbsp;&nbsp;&nbsp;Max Win = 200000</span></td><td><img src="./small_close.png" id="imgRCLProfile5"></td></tr>
+                                                            <tr><td><input name="optRCLProfile6" type="hidden" id="optRCLProfile6" value="6"></td><td>Limit F</td><td><span id="lblRCLProfile6">Max Bet = 30000&nbsp;&nbsp;&nbsp;Max Win = 300000</span></td><td><img src="./small_close.png" id="imgRCLProfile6"></td></tr>    
+                                                        </tbody></table>
+                                                    </td> 
+                                                </tr>
+                                            </tbody></table>
+                                        </td></tr>
+                                        </tbody></table>
+                                    </td></tr>
+                                </tbody></table>
+                            </td></tr>
+                            
+	
+                            <!------------------------------------- Limit Setting END ------------------------------------->
+                            
+                            <!------------------------------------- Position Taking ------------------------------------->
+				            <tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td align="center">POSITION TAKING</td>
+                                    </tr>
+                                    <tr><td>                            
+                                        <table width="100%" cellspacing="0" cellpadding="0" align="left">
+                                        <tbody><tr><td>
+                                            <div class="SetGridItem SetBorderL SetBorderB SetBorderR" style="overflow-x: scroll;">
+                                                <div class="posTaking" style="width: 160%;">
+                                                    <div class="SetBorderR" style="width: 12%;">
+                                                        <div class="SetBorderB" style="height: 13px;">&nbsp;</div>
+                                                        <div class="SetBorderB" style="height: 13px;">Master Preset</div>
+                                                        <div class="SetBorderB" style="height: 13px;">Min PT</div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            WonCasino
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRDH" style="display:inline-block;width:65px;">89%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRDH" style="display:inline-block;width:65px;">89%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            CT CASINO
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesLDC" style="display:inline-block;width:65px;">89%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesLDC" style="display:inline-block;width:65px;"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            WM Casino
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRAO" style="display:inline-block;width:65px;">89%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRAO" style="display:inline-block;width:65px;">89%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            Sexy Baccarat
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRBF" style="display:inline-block;width:65px;">87%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRBF" style="display:inline-block;width:65px;">87%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR" style="display: none;">
+                                                        <div class="SetBorderB">
+                                                            Lucky Streak
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRCL" hidept="1" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRCL" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            FGG
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRCM" style="display:inline-block;width:65px;">87%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRCM" style="display:inline-block;width:65px;">87%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            Evolution Live Casino
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRCO" style="display:inline-block;width:65px;">87%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRCO" style="display:inline-block;width:65px;">87%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR" style="display: none;">
+                                                        <div class="SetBorderB">
+                                                            Dream Gaming
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRCP" hidept="1" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRCP" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR" style="display: none;">
+                                                        <div class="SetBorderB">
+                                                            YeeBet
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRDB" hidept="1" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRDB" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            Pragmatic Play Live
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRDC" style="display:inline-block;width:65px;">89%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRDC" style="display:inline-block;width:65px;">89%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td></tr>
+                                        </tbody></table>
+                                    </td></tr>
+                                </tbody></table>
+                            </td></tr>
+                            <!------------------------------------- Position Taking END ------------------------------------->
+                        </tbody></table>
+                    </td></tr>
+                </tbody></table>
+                <!--------------------------------------------------------------------------- API2ALL CASINO END --------------------------------------------------------------------------->
+                </td></tr>
+                
+
+
+                <tr><td>
+                <!--------------------------------------------------------------------------- API2ALL SLOT --------------------------------------------------------------------------->
+                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr><td>
+                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="accordion" onclick="toggleSetting(&#39;trRCQ&#39;,this)">
+                        <tbody><tr>
+                            <td align="left">NEW SLOT GAMES</td>
+                        </tr>
+                        </tbody></table>
+                    </td></tr>
+                    <tr id="trRCQ" style="display:none;"><td>
+                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+					        
+                            <!------------------------------------- Commission Setting ------------------------------------->
+			                <tbody><tr style="display: none;"><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td colspan="3" align="center">COMMISSION SETTING</td>
+                                    </tr>
+                                    <tr class="SetGridItem" align="center">
+	                                    <td width="33%" class="SetBorderL SetBorderB">
+	                                        ACE333
+	                                        &nbsp;<span id="lblCommissionRAQ" style="display:inline-block;width:65px;">0%</span>
+	                                    </td>
+                                        <td width="33%" class="SetBorderL SetBorderB">
+	                                        PT Gaming
+	                                        &nbsp;<span id="lblCommissionRCQ" style="display:inline-block;width:65px;">0%</span>
+	                                    </td>
+                                        <td width="33%" class="SetBorderL SetBorderB SetBorderR">
+	                                        Pragmatic Play
+	                                        &nbsp;<span id="lblCommissionRCR" style="display:inline-block;width:65px;">0%</span>
+	                                    </td>                                        
+                                    </tr>
+                                </tbody></table>
+                            </td></tr>
+                            <tr style="display: none;"><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tbody><tr class="SetGridItem" align="center">
+                                        <td width="33%" class="SetBorderL SetBorderB">
+	                                        CQ9
+	                                        &nbsp;<span id="lblCommissionRCS" style="display:inline-block;width:65px;">0%</span>
+	                                    </td>
+                                        <td width="33%" class="SetBorderL SetBorderB">
+	                                        Global Gaming
+	                                        &nbsp;<span id="lblCommissionRCT" style="display:inline-block;width:65px;">0%</span>
+	                                    </td>
+                                        <td width="33%" class="SetBorderL SetBorderB SetBorderR">
+
+	                                    </td>
+                                    </tr>
+                                </tbody></table>
+                            </td></tr>
+							<!------------------------------------- Commission Setting END ------------------------------------->						
+                            <!------------------------------------- Position Taking ------------------------------------->
+				            <tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td align="center">POSITION TAKING</td>
+                                    </tr>
+                                    <tr><td>                            
+                                        <table width="100%" cellspacing="0" cellpadding="0" align="left">
+                                        <tbody><tr><td>
+                                            <div class="SetGridItem SetBorderL SetBorderB SetBorderR" style="overflow-x: scroll;">
+                                                <div class="posTaking" style="width: 160%;">
+                                                    <div class="SetBorderR" style="width: 12%;">
+                                                        <div class="SetBorderB" style="height: 13px;">&nbsp;</div>
+                                                        <div class="SetBorderB" style="height: 13px;">Master Preset</div>
+                                                        <div class="SetBorderB" style="height: 13px;">Min PT</div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            ACE333
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRAQ" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRAQ" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            PT Gaming
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRCQ" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRCQ" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            Pragmatic Play
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRCR" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRCR" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            CQ9
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRCS" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRCS" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            Global Gaming
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRCT" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRCT" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            PGSOFT
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRDD" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRDD" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            918kiss
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRDE" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRDE" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            BNG
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRDF" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRDF" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            MG
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRDG" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRDG" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            Jili Game
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRDI" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRDI" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            Joker
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRDJ" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRDJ" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR">
+                                                        <div class="SetBorderB">
+                                                            Kingmaker
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRDK" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRDK" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SetBorderR" style="display: none;">
+                                                        <div class="SetBorderB">
+                                                            Live22
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMaxSharesRDL" hidept="1" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                        <div class="SetBorderB">
+                                                            <span id="lblMinSharesRDL" style="display:inline-block;width:65px;">0%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td></tr>
+                                        </tbody></table>
+                                    </td></tr>
+                                </tbody></table>
+                            </td></tr>
+                            <!------------------------------------- Position Taking END ------------------------------------->
+                        </tbody></table>
+                    </td></tr>
+                </tbody></table>
+                <!--------------------------------------------------------------------------- API2ALL SLOT END --------------------------------------------------------------------------->
+                </td></tr>
+                
+
+                                                
+                <tr><td>
+                <!--------------------------------------------------------------------------- KENO --------------------------------------------------------------------------->
+                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr><td>
+                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="accordion" onclick="toggleSetting(&#39;trRBU&#39;,this)">
+                        <tbody><tr>
+                            <td align="left">KENO</td>
+                        </tr>
+                        </tbody></table>
+                    </td></tr>
+                    <tr id="trRBU" style="display:none;"><td>
+                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+					        <tbody><tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tbody><tr class="SetGridItem" style="display: none;">
+	                                    <td width="50%" align="left" class="SetBorderL SetBorderR">
+	                                        <span id="lblRBUCasinoEnable" hiderow="1" style="display:inline-block;width:80px;"><span style="color:green;">Enable</span></span>
+	                                    </td>
+                                    </tr>
+                                </tbody></table>
+                            </td></tr>
+                            <!------------------------------------- Commission Setting ------------------------------------->
+			                <tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td colspan="4" align="center">COMMISSION SETTING</td>
+                                    </tr>
+                                    <tr class="SetGridItem" align="center">
+	                                    <td width="25%" class="SetBorderL SetBorderB SetBorderR">
+	                                        Keno
+	                                        &nbsp;<span id="lblCommissionRBU" style="display:inline-block;width:65px;">0.25%</span>
+	                                    </td>
+                                    </tr>
+                                </tbody></table>
+                            </td></tr>
+                            <!------------------------------------- Limit Setting ------------------------------------->
+                            <tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td align="center">LIMIT SETTING</td>
+                                    </tr>
+                                    <tr><td>                            
+                                        <table width="100%" cellspacing="0" cellpadding="0" align="left">
+                                        <tbody><tr><td>
+                                            <table width="100%" height="100%" cellspacing="0" cellpadding="5">
+                                                <tbody><tr class="SetGridItem">
+                                                    <td nowrap="nowrap" class="SetBorderL SetBorderB">Profile</td>
+                                                    <td nowrap="nowrap" align="left" class="SetBorderL SetBorderB SetBorderR">
+                                                        <table class="Bold" cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                                                            <tbody><tr><td width="20px"><input name="optRBUProfile1" type="hidden" id="optRBUProfile1" value="1"></td><td width="50px">Limit A</td><td width="140px"><span id="lblRBUProfile1">Max Bet = 1000&nbsp;&nbsp;&nbsp;Max Win = 10000</span></td><td><img src="./small_tick.png" id="imgRBUProfile1"></td></tr>
+                                                            <tr><td><input name="optRBUProfile2" type="hidden" id="optRBUProfile2" value="2"></td><td>Limit B</td><td><span id="lblRBUProfile2">Max Bet = 3000&nbsp;&nbsp;&nbsp;Max Win = 30000</span></td><td><img src="./small_close.png" id="imgRBUProfile2"></td></tr>
+                                                            <tr><td><input name="optRBUProfile3" type="hidden" id="optRBUProfile3" value="3"></td><td>Limit C</td><td><span id="lblRBUProfile3">Max Bet = 5000&nbsp;&nbsp;&nbsp;Max Win = 50000</span></td><td><img src="./small_close.png" id="imgRBUProfile3"></td></tr>
+                                                            <tr><td><input name="optRBUProfile4" type="hidden" id="optRBUProfile4" value="4"></td><td>Limit D</td><td><span id="lblRBUProfile4">Max Bet = 10000&nbsp;&nbsp;&nbsp;Max Win = 100000</span></td><td><img src="./small_close.png" id="imgRBUProfile4"></td></tr>
+                                                            <tr><td><input name="optRBUProfile5" type="hidden" id="optRBUProfile5" value="5"></td><td>Limit E</td><td><span id="lblRBUProfile5">Max Bet = 20000&nbsp;&nbsp;&nbsp;Max Win = 200000</span></td><td><img src="./small_close.png" id="imgRBUProfile5"></td></tr>
+                                                            <tr><td><input name="optRBUProfile6" type="hidden" id="optRBUProfile6" value="6"></td><td>Limit F</td><td><span id="lblRBUProfile6">Max Bet = 30000&nbsp;&nbsp;&nbsp;Max Win = 300000</span></td><td><img src="./small_close.png" id="imgRBUProfile6"></td></tr>    
+                                                        </tbody></table>
+                                                    </td> 
+                                                </tr>
+                                            </tbody></table>
+                                        </td></tr>
+                                        </tbody></table>
+                                    </td></tr>
+                                </tbody></table>
+                            </td></tr>                          
+                            <!------------------------------------- Position Taking ------------------------------------->
+				            <tr><td>
+                                <table width="40%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td align="center">POSITION TAKING</td>
+                                    </tr>
+                                    <tr><td>                            
+                                        <table width="100%" cellspacing="0" cellpadding="0" align="left">
+                                        <tbody><tr><td>
+                                            <table width="100%" height="100%" cellspacing="0" cellpadding="5">
+                                                <tbody><tr align="center">
+                                                    <td width="60%" class="SetPosBg1 SetBorderL SetBorderB">&nbsp;</td>
+                                                    <td width="40%" class="SetPosBg2 SetBorderL SetBorderB SetBorderR">
+                                                        Keno
+                                                    </td>
+                                                </tr>
+                                                <tr align="center">
+                                                    <td class="SetPosBg1 SetBorderL SetBorderB">Master Preset</td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB SetBorderR">
+                                                        <span id="lblMaxSharesRBU" style="display:inline-block;width:65px;">84%</span>
+                                                    </td>
+                                                </tr>
+                                                <tr align="center">
+                                                    <td class="SetPosBg1 SetBorderL SetBorderB">Min PT</td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB SetBorderR">
+                                                        <span id="lblMinSharesRBU" style="display:inline-block;width:65px;">84%</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        </td></tr>
+                                        </tbody></table>
+                                    </td></tr>
+                                </tbody></table>
+                            </td></tr>
+                            <!------------------------------------- Position Taking END ------------------------------------->
+                        </tbody></table>
+                    </td></tr>
+                </tbody></table>
+                <!--------------------------------------------------------------------------- KENO END --------------------------------------------------------------------------->
+                </td></tr>
+                
+
+
+                <tr><td>
+                <!--------------------------------------------------------------------------- 4D GAMES --------------------------------------------------------------------------->
+                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr><td>
+                        <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" class="accordion" onclick="toggleSetting(&#39;tr4d&#39;,this)">
+                        <tbody><tr>
+                            <td align="left">4D GAMES</td>
+                        </tr>
+                        </tbody></table>
+                    </td></tr>
+                    <tr id="tr4d" style="display:none;"><td>
+                        <div id="pan4D_LimitSet">
+		
+                            </div><table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                            <!------------------------------------- Commission Setting ------------------------------------->
+                            <tbody><tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td colspan="4" align="center">COMMISSION SETTING</td>
+                                    </tr>
+                                    <tr class="SetGridItem" align="center">
+                                        <td class="SetBorderL SetBorderB">
+                                            Commission&nbsp;1D
+                                            &nbsp;<span id="lblCommission1D" style="display:inline-block;width:65px;">5%</span>
+                                        </td>
+                                        <td class="SetBorderL SetBorderB">
+                                            Commission&nbsp;2D
+                                            &nbsp;<span id="lblCommission2D" style="display:inline-block;width:65px;">5%</span>
+                                        </td>
+                                        <td class="SetBorderL SetBorderB SetBorderR">
+                                            Commission&nbsp;3D
+                                            &nbsp;<span id="lblCommission3D" style="display:inline-block;width:65px;">30%</span>
+                                        </td>
+                                        <td class="SetBorderL SetBorderB" style="display:none;">
+
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </td></tr>
+                            <!------------------------------------- Limit Setting ------------------------------------->
+                            <tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="5">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td colspan="3" align="center">LIMIT SETTING</td>
+                                    </tr>
+                                    <tr class="SetGridItem" align="center">
+	                                    <td width="33%" align="left" class="SetBorderL SetBorderB">&nbsp;</td>
+	                                    <td width="33%" class="SetBorderL SetBorderB">Max Bet</td>
+	                                    <td width="33%" class="SetBorderL SetBorderB SetBorderR">Max Per Match</td>
+                                    </tr>
+                                    <tr class="SetGridItem" align="center">
+	                                    <td align="left" class="SetBorderL SetBorderB">1D</td>
+	                                    <td class="SetBorderL SetBorderB">
+	                                        <span id="lbl1D" style="display:inline-block;width:80px;">0</span>
+	                                    </td>
+	                                    <td class="SetBorderL SetBorderB SetBorderR">&nbsp;</td>
+                                    </tr>
+                                    <tr class="SetGridItem" align="center">
+	                                    <td align="left" class="SetBorderL SetBorderB">2D</td>
+	                                    <td class="SetBorderL SetBorderB">
+	                                        <span id="lbl2D" style="display:inline-block;width:80px;">0</span>
+	                                    </td>
+	                                    <td class="SetBorderL SetBorderB SetBorderR">&nbsp;</td>
+                                    </tr>
+                                    <tr class="SetGridItem" align="center">
+	                                    <td align="left" class="SetBorderL SetBorderB">3D</td>
+	                                    <td class="SetBorderL SetBorderB">
+                                            <span id="lbl3D" style="display:inline-block;width:80px;">0</span>
+	                                    </td>
+	                                    <td class="SetBorderL SetBorderB SetBorderR">
+                                            <span id="lblMatchLimit3D" style="display:inline-block;width:80px;">0</span>
+	                                    </td>
+                                    </tr>
+                                </tbody></table>
+                            </td></tr>
+                            
+	
+                            <!------------------------------------- Position Taking ------------------------------------->
+                            <tr><td>
+                                <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody><tr class="SetGridHeader">
+	                                    <td align="center">POSITION TAKING</td>
+                                    </tr>
+                                    <tr><td>                            
+                                        <table width="100%" cellspacing="0" cellpadding="0" align="left">
+                                        <tbody><tr><td>
+                                            <div id="panCasino2">
+		
+                                                    </div><table width="100%" height="100%" cellspacing="0" cellpadding="5">
+                                                <tbody><tr align="center">
+                                                    <td width="40%" class="SetPosBg1 SetBorderL SetBorderB">&nbsp;</td>
+					                                <td width="20%" class="SetPosBg2 SetBorderL SetBorderB">
+                                                        1D
+                                                    </td>
+                                                    <td width="20%" class="SetPosBg2 SetBorderL SetBorderB">
+                                                        2D
+                                                    </td>
+                                                    
+	
+                                                    <td width="20%" class="SetPosBg2 SetBorderL SetBorderB SetBorderR">
+                                                        3D
+                                                    </td>
+                                                </tr>
+                                                <tr align="center">
+                                                    <td class="SetPosBg1 SetBorderL SetBorderB">Master Preset</td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                        <span id="lblMaxShares1D" style="display:inline-block;width:65px;">0%</span>
+                                                    </td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                        <span id="lblMaxShares2D" style="display:inline-block;width:65px;">0%</span>
+                                                    </td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB SetBorderR">
+                                                        <span id="lblMaxShares3D" style="display:inline-block;width:65px;">0%</span>
+                                                    </td>
+                                                </tr>
+                                                
+                                                <tr align="center">
+                                                    <td class="SetPosBg1 SetBorderL SetBorderB">Min PT</td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                        <span id="lblMinShares1D" style="display:inline-block;width:65px;">0%</span>
+                                                    </td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB">
+                                                        <span id="lblMinShares2D" style="display:inline-block;width:65px;">0%</span>
+                                                    </td>
+                                                    <td class="SetPosBg2 SetBorderL SetBorderB SetBorderR">
+                                                        <span id="lblMinShares3D" style="display:inline-block;width:65px;">0%</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        </td></tr>
+                                        </tbody></table>
+                                    </td></tr>
+                                </tbody></table>
+                            </td></tr>
+                            <!------------------------------------- Position Taking END ------------------------------------->
+                        </tbody></table>
+                    </td></tr>
+                </tbody></table>
+                <!--------------------------------------------------------------------------- 4D GAMES END --------------------------------------------------------------------------->
+                </td></tr>
+                
+
+                
+                <tr><td>&nbsp;</td></tr>
+
+                <!---------------------------------------------------------------------- DETAILS END ---------------------------------------------------------------------->
+                <!----------------------------------------------------------------------------------------------------------------------------------------------------------->
+                </tbody>
+                </table>
+                <!---------------------------------------------------------------------- SHARE AREA END ---------------------------------------------------------------------->
+            </td></tr>
+        <!---------------------------------------------------------------------- CONTENT END ---------------------------------------------------------------------->
+        </tbody></table>
+    </div>
+    </form>
+
+
+</body></html>

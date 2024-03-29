@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+
+</title>
+    <script type="text/javascript" src="{{ url_for('static', filename='report/jquery-my.min.js') }}"></script>
+    <link href="{{ url_for('static', filename='report/bootstrap.min.css') }}" rel="stylesheet" type="text/css"><link href="{{ url_for('static', filename='report/bootstrap-multiselect.css') }}" rel="stylesheet" type="text/css"> 
+    <script type="text/javascript" src="{{ url_for('static', filename='report/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='report/bootstrap-multiselect.js') }}"></script>
+    <link href="{{ url_for('static', filename='report/portal.css') }}" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="{{ url_for('static', filename='report/Shared.js') }}"></script>
+    <script type="text/javascript" language="javascript" src="{{ url_for('static', filename='report/choosedate.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='report/calendar.css') }}">
+    <style type="text/css">
+        body {
+            font-family: unset;
+            font-size: unset;
+            line-height: unset;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin: 0 3px;
+            vertical-align: text-bottom;
+        }
+
+        *, *:before, *:after {
+            -webkit-box-sizing: unset;
+            -moz-box-sizing: unset;
+            box-sizing: unset;
+        }
+
+        table {
+            border-collapse: unset;
+        }
+
+        label {
+            display: unset;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="background" leftmargin="5" topmargin="5" rightmargin="5" marginheight="0" marginwidth="0">
+    <form name="form1"  id="form1">
+
+
+    <div id="page_main">
+        <div id="header_main">
+            &nbsp;REPORT - Pending Matches
+            &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <table cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td height="5">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+
+<table cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
+	<tbody><tr>
+		<td colspan="2" align="left">
+			<table cellspacing="0" cellpadding="3" rules="all" border="1" id="PendingMatches_cm1_g" style="border-color:#ADADAD;width:600px;border-collapse:collapse;">
+	<tbody><tr class="GridItem" align="center">
+		<td class="GridHeader" align="center" style="width:20%;white-space:nowrap;">
+							Date:
+						</td><td class="GridHeader" align="center" style="width:20%;white-space:nowrap;">
+							18/3/2024
+						</td><td class="GridHeader" align="center" style="width:20%;white-space:nowrap;">
+							19/3/2024
+						</td><td class="GridHeader" align="center" style="width:20%;white-space:nowrap;">
+							20/3/2024
+						</td>
+	</tr><tr class="GridItem" align="center">
+		<td class="GridHeader" align="center" style="width:20%;white-space:nowrap;">
+							Status
+						</td><td class="Bold" align="center" style="width:20%;white-space:nowrap;">
+							<span class="Blue">Completed</span>
+						</td><td class="Bold" align="center" style="width:20%;white-space:nowrap;">
+							<span class="Blue">Completed</span>
+						</td><td class="Bold" align="center" style="width:20%;white-space:nowrap;">
+							<span class="Gray">Pending</span>
+						</td>
+	</tr>
+</tbody></table></td>
+	</tr>
+</tbody></table>
+                </td>
+            </tr>
+            <tr>
+                <td height="20">
+                </td>
+            </tr>
+        </tbody></table>
+        <div id="header_main2">
+            &nbsp;REPORT - Win Lose Account (Details)
+            &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <table cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td height="5">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+    
+<link rel="stylesheet" type="text/css" href="./jscal2.css">
+<link rel="stylesheet" type="text/css" href="./steel.css">
+<script type="text/javascript" src="./jscal2.js"></script>
+<script type="text/javascript" src="./en.js"></script>
+
+<style>#SubAccsWinLoseFull_cm1_lbSportbook,#SubAccsWinLoseFull_cm1_lbCasino,#SubAccsWinLoseFull_cm1_lbSlotGames,#SubAccsWinLoseFull_cm1_lbLottery,#SubAccsWinLoseFull_cm1_lbKENO {display:none;}</style>
+
+<script type="text/javascript">
+$(document).ready(function () {
+        var groups = {};
+        $("#SubAccsWinLoseFull_cm1_lbSportbook option[OptionGroup]").each(function () {
+            groups[$.trim($(this).attr("OptionGroup"))] = true;
+        });
+        $.each(groups, function (c) {
+            $("#SubAccsWinLoseFull_cm1_lbSportbook option[OptionGroup='" + c + "']").wrapAll('<optgroup label="' + c + '">');
+        });
+
+        $('#SubAccsWinLoseFull_cm1_lbSportbook,#SubAccsWinLoseFull_cm1_lbCasino,#SubAccsWinLoseFull_cm1_lbSlotGames,#SubAccsWinLoseFull_cm1_lbLottery,#SubAccsWinLoseFull_cm1_lbKENO').each(function () {
+			$('#' + this.id).multiselect({
+				includeSelectAllOption: true,
+				maxHeight: 300,
+				buttonWidth: 160,
+				buttonContainer: '<div class="btn-group" style="margin: 0 6px;"/>',
+				numberDisplayed: 2,
+				//enableFiltering: true,
+				//enableCaseInsensitiveFiltering: true,
+				enableClickableOptGroups: true,
+				//includeFilterClearBtn: false,
+				//filterPlaceholder: 'Search',
+				selectedClass: null,
+				buttonClass: 'btnAgent',
+				nSelectedText: 'Selected',
+				allSelectedText: getTitle(this.id),
+				nonSelectedText: getTitle(this.id),
+				templates: {
+					button: '<button type="button" class="multiselect dropdown-toggle" data-toggle="dropdown" style="font-size: 12px; line-height : 15px"><span class="multiselect-selected-text ENG"><\/span> <b class="caret"><\/b><\/button>',
+					ul: '<ul class="multiselect-container dropdown-menu" style="text-align: left;"><\/ul>',
+					filter: '<li class="multiselect-item filter"><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-search"><\/i><\/span><input class="form-control multiselect-search" type="text" style="font-size:13px; height:28px;"><\/div><\/li>',
+					filterClearBtn: '<span class="input-group-btn"><button class="btnAgent btn-default multiselect-clear-filter" type="button"><i class="glyphicon glyphicon-remove-circle"><\/i><\/button><\/span>',
+					li: '<li><a tabindex="0" style="font-size:13px"><label><\/label><\/a><\/li>',
+					divider: '<li class="multiselect-item divider"><\/li>'
+				},
+				onDropdownShow: function (e) {
+					$('.multiselect-group').css("fontSize", 13);
+				}
+			});
+		});
+	});
+
+    function getTitle(id) {
+        if (id == "SubAccsWinLoseFull_cm1_lbSportbook")
+            return "SPORTSBOOK";
+        else if (id == "SubAccsWinLoseFull_cm1_lbCasino")
+            return "CASINO";
+        else if (id == "SubAccsWinLoseFull_cm1_lbSlotGames")
+            return "SLOT GAMES";
+		else if (id == "SubAccsWinLoseFull_cm1_lbLottery")
+            return "LOTTERY";
+		else if (id == "SubAccsWinLoseFull_cm1_lbKENO")
+            return "KENO";
+        else
+            return "";
+    }
+</script>
+
+<table cellspacing="0" cellpadding="0" width="100%" align="center">
+	<tbody><tr>
+		<td width="80px" align="left" class="Bold">
+			p12644
+		</td>
+		<form action="/accessaccount" method="post">
+			<label for="id">Select an ID:</label>
+			<select id="id" name="id">
+				<!-- 드롭다운 메뉴를 동적으로 생성할 영역입니다. -->
+			</select>
+			<button type="submit">Submit</button>
+		</form>
+	
+		<script>
+			// /allids 엔드포인트에서 id 목록을 가져와서 dropdown에 추가하는 함수
+			fetch('/allids')
+				.then(response => response.json())
+				.then(data => {
+					const idDropdown = document.getElementById('id');
+					data.forEach(id => {
+						const option = document.createElement('option');
+						option.value = id;
+						option.textContent = id;
+						idDropdown.appendChild(option);
+					});
+				});
+		</script>
+		<td align="left">
+		    <div id="SubAccsWinLoseFull_cm1_panDetails">
+	
+			    <table cellpadding="0" cellspacing="0" width="100%" align="left">
+				    <tbody><tr>
+					    <td align="left" width="270px">
+						    <table cellpadding="0" cellspacing="0" width="270px" align="left">
+							    <tbody><tr>
+								    <td width="50px" align="right" nowrap="nowrap" class="Bold">
+									    <span class="ENG">From</span>:&nbsp;
+								    </td>
+								    <td width="95px" align="left" nowrap="nowrap">
+								        <input id="fdate" type="text" readonly="true" name="datBegin" size="10" value="2024-03-20">
+								    </td>
+								    <td width="20px">
+                                        <input style="margin: 0px; cursor: pointer;" id="fdate_trigger" title="Date selector" onclick="javascript:return false;" alt="" src="./cal.gif" type="image">
+                                        <script type="text/javascript">
+                                            var fdate = Calendar.setup({
+                                                animation: false,
+                                                trigger: "fdate_trigger",
+                                                inputField: "fdate",
+                                                
+                                                dateFormat: "%Y-%m-%d",
+                                                weekNumbers: true,
+                                                onSelect: function() {
+                                                    this.hide();
+                                                }
+                                            });
+                                        </script>
+								    </td>
+								    <td width="30px" align="right" nowrap="nowrap" class="Bold">
+									    &nbsp;&nbsp;<span class="ENG">To</span>:&nbsp;
+								    </td>
+								    <td width="95px" align="left" nowrap="nowrap">
+								        <input type="text" id="tdate" readonly="true" name="datEnd" size="10" value="2024-03-20">
+								    </td>
+								    <td width="20px">
+								        <input style="margin: 0px; cursor: pointer;" id="tdate_trigger" title="Date selector" onclick="javascript:return false;" alt="" src="./cal.gif" type="image">
+								        <script language="javascript">
+								            var tdate = Calendar.setup({
+								                animation: false,
+								                trigger: "tdate_trigger",
+								                inputField: "tdate",
+								                
+                                                dateFormat: "%Y-%m-%d",
+								                weekNumbers: true,
+								                onSelect: function() {
+								                    this.hide();
+								                }
+								            });
+                                        </script>
+								    </td>
+							    </tr>
+						    </tbody></table>
+					    </td>
+					    <td align="left" nowrap="nowrap">
+						    &nbsp;&nbsp;<a id="SubAccsWinLoseFull_cm1_btnSubmit" class="btnAgent" href="javascript:__doPostBack(&#39;SubAccsWinLoseFull_cm1$btnSubmit&#39;,&#39;&#39;)" style="display:inline-block;width:70px;"><span class="ENG">Submit</span></a>
+                            &nbsp;<a id="SubAccsWinLoseFull_cm1_btnToday" class="btnAgent" href="javascript:__doPostBack(&#39;SubAccsWinLoseFull_cm1$btnToday&#39;,&#39;&#39;)" style="display:inline-block;width:70px;"><span class="ENG">Today</span></a>
+                            &nbsp;<a id="SubAccsWinLoseFull_cm1_btnYesterday" class="btnAgent" href="javascript:__doPostBack(&#39;SubAccsWinLoseFull_cm1$btnYesterday&#39;,&#39;&#39;)" style="display:inline-block;width:70px;"><span class="ENG">Yesterday</span></a>
+                            &nbsp;<a id="SubAccsWinLoseFull_cm1_btnThisWeek" class="btnAgent" href="javascript:__doPostBack(&#39;SubAccsWinLoseFull_cm1$btnThisWeek&#39;,&#39;&#39;)" style="display:inline-block;width:70px;"><span class="ENG">This Week</span></a>
+                            &nbsp;<a id="SubAccsWinLoseFull_cm1_btnLastWeek" class="btnAgent" href="javascript:__doPostBack(&#39;SubAccsWinLoseFull_cm1$btnLastWeek&#39;,&#39;&#39;)" style="display:inline-block;width:70px;"><span class="ENG">Last Week</span></a>
+							
+                            &nbsp;
+						    &nbsp;
+					    </td>
+				    </tr>
+			    </tbody></table>
+		    
+</div>
+    		
+		    
+		</td>
+	</tr>
+	<tr>
+	    <td colspan="2" valign="middle">
+            <table cellpadding="5" cellspacing="5" align="left">
+                <tbody><tr>
+                    <td>
+                        <select size="4" name="SubAccsWinLoseFull_cm1$lbSportbook" multiple="multiple" id="SubAccsWinLoseFull_cm1_lbSportbook" style="display: none;">
+	<option selected="selected" value="1">Sportbook</option>
+	<option selected="selected" value="14">Financials</option>
+	<option selected="selected" value="24">NOVA88 Sportbook L/T/E</option>
+	<option selected="selected" value="25">NOVA88 Virtual Sport</option>
+	<option selected="selected" value="26">NOVA88 Number Game</option>
+
+</select><div class="btn-group" style="margin: 0px 6px; width: 160px;"><button type="button" class="multiselect dropdown-toggle btnAgent" data-toggle="dropdown" style="font-size: 12px; line-height: 15px; width: 160px; overflow: hidden; text-overflow: ellipsis;" title="Sportbook, Financials, NOVA88 Sportbook L/T/E, NOVA88 Virtual Sport, NOVA88 Number Game"><span class="multiselect-selected-text ENG">SPORTSBOOK (5)</span> <b class="caret"></b></button><ul class="multiselect-container dropdown-menu" style="text-align: left; max-height: 300px; overflow: hidden auto;"><li class="multiselect-item multiselect-all"><a tabindex="0" style="font-size:13px" class="multiselect-all"><label class="checkbox"><input type="checkbox" value="multiselect-all">  Select all</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="1"> Sportbook</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="14"> Financials</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="24"> NOVA88 Sportbook L/T/E</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="25"> NOVA88 Virtual Sport</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="26"> NOVA88 Number Game</label></a></li></ul></div>
+                        <select size="4" name="SubAccsWinLoseFull_cm1$lbCasino" multiple="multiple" id="SubAccsWinLoseFull_cm1_lbCasino" style="display: none;">
+	<option selected="selected" value="49">WonCasino</option>
+	<option selected="selected" value="7">WM Casino</option>
+	<option selected="selected" value="16">CT 855</option>
+	<option selected="selected" value="22">Sexy Baccarat</option>
+	<option selected="selected" value="28">FGG</option>
+	<option selected="selected" value="30">Evolution Live Casino</option>
+	<option selected="selected" value="44">Pragmatic Play Live</option>
+
+</select><div class="btn-group" style="margin: 0px 6px; width: 160px;"><button type="button" class="multiselect dropdown-toggle btnAgent" data-toggle="dropdown" style="font-size: 12px; line-height: 15px; width: 160px; overflow: hidden; text-overflow: ellipsis;" title="WonCasino, WM Casino, CT 855, Sexy Baccarat, FGG, Evolution Live Casino, Pragmatic Play Live"><span class="multiselect-selected-text ENG">CASINO (7)</span> <b class="caret"></b></button><ul class="multiselect-container dropdown-menu" style="text-align: left; max-height: 300px; overflow: hidden auto;"><li class="multiselect-item multiselect-all"><a tabindex="0" style="font-size:13px" class="multiselect-all"><label class="checkbox"><input type="checkbox" value="multiselect-all">  Select all</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="49"> WonCasino</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="7"> WM Casino</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="16"> CT 855</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="22"> Sexy Baccarat</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="28"> FGG</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="30"> Evolution Live Casino</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="44"> Pragmatic Play Live</label></a></li></ul></div>
+                        <select size="4" name="SubAccsWinLoseFull_cm1$lbSlotGames" multiple="multiple" id="SubAccsWinLoseFull_cm1_lbSlotGames" style="display: none;">
+	<option selected="selected" value="9">ACE333</option>
+	<option selected="selected" value="32">PT Gaming</option>
+	<option selected="selected" value="33">Pragmatic Play</option>
+	<option selected="selected" value="34">CQ9</option>
+	<option selected="selected" value="35">Global Gaming</option>
+	<option selected="selected" value="45">PGSOFT</option>
+	<option selected="selected" value="46">918kiss</option>
+	<option selected="selected" value="47">BNG</option>
+	<option selected="selected" value="48">MG</option>
+	<option selected="selected" value="50">Jili Game</option>
+	<option selected="selected" value="51">Joker</option>
+	<option selected="selected" value="52">Kingmaker</option>
+	<option selected="selected" value="53">Live22</option>
+
+</select><div class="btn-group" style="margin: 0px 6px; width: 160px;"><button type="button" class="multiselect dropdown-toggle btnAgent" data-toggle="dropdown" style="font-size: 12px; line-height: 15px; width: 160px; overflow: hidden; text-overflow: ellipsis;" title="ACE333, PT Gaming, Pragmatic Play, CQ9, Global Gaming, PGSOFT, 918kiss, BNG, MG, Jili Game, Joker, Kingmaker, Live22"><span class="multiselect-selected-text ENG">SLOT GAMES (13)</span> <b class="caret"></b></button><ul class="multiselect-container dropdown-menu" style="text-align: left; max-height: 300px; overflow: hidden auto;"><li class="multiselect-item multiselect-all"><a tabindex="0" style="font-size:13px" class="multiselect-all"><label class="checkbox"><input type="checkbox" value="multiselect-all">  Select all</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="9"> ACE333</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="32"> PT Gaming</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="33"> Pragmatic Play</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="34"> CQ9</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="35"> Global Gaming</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="45"> PGSOFT</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="46"> 918kiss</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="47"> BNG</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="48"> MG</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="50"> Jili Game</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="51"> Joker</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="52"> Kingmaker</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="53"> Live22</label></a></li></ul></div>
+                        <select size="4" name="SubAccsWinLoseFull_cm1$lbLottery" multiple="multiple" id="SubAccsWinLoseFull_cm1_lbLottery" style="display: none;">
+	<option selected="selected" value="13">Togel Indonesia</option>
+	<option selected="selected" value="15">China Fucai</option>
+	<option selected="selected" value="12">4D Specials</option>
+	<option selected="selected" value="11">Huay Thai</option>
+	<option selected="selected" value="19">Laos Lotto</option>
+	<option selected="selected" value="20">Hanoi Lotto</option>
+	<option selected="selected" value="21">Perdana3D</option>
+
+</select><div class="btn-group" style="margin: 0px 6px; width: 160px;"><button type="button" class="multiselect dropdown-toggle btnAgent" data-toggle="dropdown" style="font-size: 12px; line-height: 15px; width: 160px; overflow: hidden; text-overflow: ellipsis;" title="Togel Indonesia, China Fucai, 4D Specials, Huay Thai, Laos Lotto, Hanoi Lotto, Perdana3D"><span class="multiselect-selected-text ENG">LOTTERY (7)</span> <b class="caret"></b></button><ul class="multiselect-container dropdown-menu" style="text-align: left; max-height: 300px; overflow: hidden auto;"><li class="multiselect-item multiselect-all"><a tabindex="0" style="font-size:13px" class="multiselect-all"><label class="checkbox"><input type="checkbox" value="multiselect-all">  Select all</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="13"> Togel Indonesia</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="15"> China Fucai</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="12"> 4D Specials</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="11"> Huay Thai</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="19"> Laos Lotto</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="20"> Hanoi Lotto</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="21"> Perdana3D</label></a></li></ul></div>
+                        <select size="4" name="SubAccsWinLoseFull_cm1$lbKENO" multiple="multiple" id="SubAccsWinLoseFull_cm1_lbKENO" style="display: none;">
+	<option selected="selected" value="23">KENO</option>
+
+</select><div class="btn-group" style="margin: 0px 6px; width: 160px;"><button type="button" class="multiselect dropdown-toggle btnAgent" data-toggle="dropdown" style="font-size: 12px; line-height: 15px; width: 160px; overflow: hidden; text-overflow: ellipsis;" title="KENO"><span class="multiselect-selected-text ENG">KENO</span> <b class="caret"></b></button><ul class="multiselect-container dropdown-menu" style="text-align: left; max-height: 300px; overflow: hidden auto;"><li class="multiselect-item multiselect-all"><a tabindex="0" style="font-size:13px" class="multiselect-all"><label class="checkbox"><input type="checkbox" value="multiselect-all">  Select all</label></a></li><li><a tabindex="0" style="font-size:13px"><label class="checkbox"><input type="checkbox" value="23"> KENO</label></a></li></ul></div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>
+                        
+                        <div id="SubAccsWinLoseFull_cm1_viewHistoryLink"><a  class="Link4">View History Report</a></div>
+                    </td>
+                </tr>
+            </tbody></table>
+	    </td>
+	</tr>
+	
+	<!-- Separate Line -->
+	<tr><td colspan="2"><hr size="1" style="margin: 0"></td></tr>
+	
+	<tr>
+		<td colspan="2">
+			<table class="Grid" cellspacing="0" cellpadding="3" rules="all" border="1" id="SubAccsWinLoseFull_cm1_g" style="border-color:#A0A0A0;width:100%;border-collapse:collapse;">
+	<tbody><tr class="GridHeader" align="center">
+		<td align="left" valign="top" rowspan="2" style="white-space:nowrap;">
+							Account
+						</td><td align="left" valign="top" rowspan="2" style="white-space:nowrap;">
+							Contact
+						</td><td align="left" valign="top" rowspan="2" style="white-space:nowrap;">
+							Cur
+						</td><td align="right" valign="top" rowspan="2" style="white-space:nowrap;">
+							Turnover
+						</td><td align="right" valign="top" rowspan="2" style="white-space:nowrap;">
+							Valid Amount
+						</td><td align="right" valign="top" rowspan="2" style="white-space:nowrap;">
+							Stake Count
+						</td><td align="right" valign="top" rowspan="2" style="white-space:nowrap;">
+							Gross Comm
+						</td><td colspan="3" align="center">Member</td>
+<td colspan="4" align="center">Agent</td>
+<td colspan="4" align="center">Master</td>
+<td colspan="4" align="center">Company</td>
+</tr>
+<tr class="GridHeader" align="center">
+			<td align="right" style="white-space:nowrap;">
+							W/L
+						</td><td align="right" style="white-space:nowrap;">
+							Com
+						</td><td align="right" style="white-space:nowrap;">
+							Total
+						</td><td align="right" style="white-space:nowrap;">
+							V.Amt
+						</td><td align="right" style="white-space:nowrap;">
+							W/L
+						</td><td align="right" style="white-space:nowrap;">
+							Com
+						</td><td align="right" style="white-space:nowrap;">
+							Total
+						</td><td align="right" style="white-space:nowrap;">
+							V.Amt
+						</td><td align="right" style="white-space:nowrap;">
+							W/L
+						</td><td align="right" style="white-space:nowrap;">
+							Com
+						</td><td align="right" style="white-space:nowrap;">
+							Total
+						</td><td align="right" style="white-space:nowrap;">
+							V.Amt
+						</td><td align="right" style="white-space:nowrap;">
+							W/L
+						</td><td align="right" style="white-space:nowrap;">
+							Com
+						</td><td align="right" style="white-space:nowrap;">
+							Total
+						</td>
+		</tr><tr class="GridItem" align="center">
+			<td class="Normal" align="left" style="white-space:nowrap;">
+							
+							<span id="SubAccsWinLoseFull_cm1_g_ctl02_lblAcc" class="Normal">Total</span>
+							<span id="SubAccsWinLoseFull_cm1_g_ctl02_lblDishonest"></span>
+							<input type="hidden" name="SubAccsWinLoseFull_cm1$g$ctl02$hdnCurCode" id="SubAccsWinLoseFull_cm1_g_ctl02_hdnCurCode">
+						</td><td class="Normal" align="left" style="white-space:nowrap;">
+													
+						</td><td class="Normal" align="left" style="white-space:nowrap;">
+							<span id="SubAccsWinLoseFull_cm1_g_ctl02_lblCurCode" class="Normal"></span>
+						</td><td align="right" style="white-space:nowrap;">
+							0
+						</td><td align="right" style="white-space:nowrap;">
+							0
+						</td><td align="right" style="white-space:nowrap;">
+							0
+						</td><td align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td class="Bold" align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td class="Bold" align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td class="NewBG" align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td class="NewBG" align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td class="NewBG" align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td class="NewBG Bold" align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td><td class="Bold" align="right" style="white-space:nowrap;">
+							<span class="Positive">0.00</span>
+						</td>
+		</tr>
+	
+	
+</tbody></table>
+
+<div style="display:none">
+<table cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
+	<tbody><tr>
+		<td colspan="2" align="left">
+			<table class="Grid" cellspacing="0" cellpadding="3" rules="all" border="1" id="SubAccsWinLoseFull_cm1_g2" style="border-color:#ADADAD;width:600px;border-collapse:collapse;">
+		<tbody><tr align="center">
+			<td class="GridHeader3" align="center" style="width:250px;white-space:nowrap;">	
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td><td align="center" style="width:20%;white-space:nowrap;">							
+							<table class="GridHeader3" cellpadding="0" cellspacing="0" border="1" width="100%" style="height:100%">
+						        <tbody><tr>
+						            <td>
+						                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						                18/3/2024
+						                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						            </td>
+						        </tr>
+						    </tbody></table>
+						</td><td align="center" style="width:20%;white-space:nowrap;">
+							<table class="GridHeader3" cellpadding="0" cellspacing="0" border="1" width="100%" style="height:100%">
+						        <tbody><tr>
+						            <td>
+						                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						                19/3/2024
+						                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						            </td>
+						        </tr>
+						    </tbody></table>
+						</td><td align="center" style="width:20%;white-space:nowrap;">
+							<table class="GridHeader3" cellpadding="0" cellspacing="0" border="1" width="100%" style="height:100%">
+						        <tbody><tr>
+						            <td>
+						                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						                20/3/2024
+						                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						            </td>
+						        </tr>
+						    </tbody></table>
+						</td>
+		</tr><tr align="center">
+			<td class="GridHeader3" align="center" style="width:250px;white-space:nowrap;">	
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pending
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td><td align="center" style="width:20%;white-space:nowrap;">							
+							<table class="GridItem" cellpadding="0" cellspacing="0" border="1" width="100%" style="height:100%">
+						        <tbody><tr>
+						            <td>
+						                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						                0
+						                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						            </td>
+						        </tr>
+						    </tbody></table>
+						</td><td align="center" style="width:20%;white-space:nowrap;">
+							<table class="GridItem" cellpadding="0" cellspacing="0" border="1" width="100%" style="height:100%">
+						        <tbody><tr>
+						            <td>
+						                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						                0
+						                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						            </td>
+						        </tr>
+						    </tbody></table>
+						</td><td align="center" style="width:20%;white-space:nowrap;">
+							<table class="GridItem" cellpadding="0" cellspacing="0" border="1" width="100%" style="height:100%">
+						        <tbody><tr>
+						            <td>
+						                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						                6280
+						                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						            </td>
+						        </tr>
+						    </tbody></table>
+						</td>
+		</tr>
+	</tbody></table></td>
+	</tr>
+</tbody></table>
+</div>
+                </td>
+            </tr>
+        </tbody></table>
+    
+    
+
+
+</td></tr></tbody></table></div></form></body></html>

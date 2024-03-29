@@ -1,0 +1,257 @@
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+
+</title><link href="{{ url_for('static', filename='main/portal.css') }}" rel="stylesheet" type="text/css">    
+    <script src="{{ url_for('static', filename='main/jquery-my.min.js') }}" type="text/javascript"></script>
+
+    <!--<link href="./header.css" rel="stylesheet" type="text/css">-->
+    <link href="{{ url_for('static', filename='main/header.css') }}" rel="stylesheet" type="text/css">    
+
+	<script type="text/javascript">
+
+	 /***********************************************
+     * Local Time script- © Dynamic Drive (http://www.dynamicdrive.com)
+     * This notice MUST stay intact for legal use
+     * Visit http://www.dynamicdrive.com/ for this script and 100s more.
+     ***********************************************/
+
+     //var weekdaystxt = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
+     var weekdaystxt = ["Sun", "Mon", "Tue",
+                                "Wed", "Thu", "Fri",
+                                "Sat"]
+
+     var monthstxt = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];                                    
+
+     function showLocalTime(container, servermode, offsetMinutes, displayversion) {
+         if (!document.getElementById || !document.getElementById(container)) return
+         this.container = document.getElementById(container)
+         this.displayversion = displayversion
+         var servertimestring = (servermode == "server-php") ? '<? print date("F d, Y H:i:s", time())?>' : (servermode == "server-ssi") ? '<!--#config timefmt="%B %d, %Y %H:%M:%S"--><!--#echo var="DATE_LOCAL" -->' : '03/20/2024 13:39:59'
+         this.localtime = this.serverdate = new Date(servertimestring)
+         this.localtime.setTime(this.serverdate.getTime() + offsetMinutes * 60 * 1000) //add user offset to server time
+         this.updateTime()
+         this.updateContainer()
+     }
+
+     showLocalTime.prototype.updateTime = function() {
+         var thisobj = this
+         this.localtime.setSeconds(this.localtime.getSeconds() + 1)
+         setTimeout(function() { thisobj.updateTime() }, 1000) //update time every second
+     }
+
+     showLocalTime.prototype.updateContainer = function() {
+         var thisobj = this
+         if (this.displayversion == "long")
+             this.container.innerHTML = this.localtime.toLocaleString()
+         else {
+             /*var hour = this.localtime.getHours()
+             var minutes = this.localtime.getMinutes()
+             var seconds = this.localtime.getSeconds()
+             var ampm = (hour >= 12) ? "PM" : "AM"
+             var dayofweek = weekdaystxt[this.localtime.getDay()]*/
+             var monthofyear = monthstxt[this.localtime.getMonth()]
+             var day = this.localtime.getDate();
+             var year = this.localtime.getFullYear();
+             var hour = this.localtime.getHours()
+             var minutes = this.localtime.getMinutes()
+             var seconds = this.localtime.getSeconds()
+             var ampm = (hour >= 12) ? "PM" : "AM"
+             var dayofweek = weekdaystxt[this.localtime.getDay()]
+
+             //this.container.innerHTML = dayofweek + " " + formatField(hour, 1) + ":" + formatField(minutes) + ":" + formatField(seconds) + " " + ampm
+             this.container.innerHTML = formatField(hour, 1) + ":" + formatField(minutes) + ":" + formatField(seconds) + " " + ampm + " GMT +8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + monthofyear + " " + day + ", " + year
+         }
+         setTimeout(function() { thisobj.updateContainer() }, 1000) //update container every second
+     }
+
+     function formatField(num, isHour) {
+         if (typeof isHour != "undefined") { //if this is the hour field
+             var hour = (num > 12) ? num - 12 : num
+             return (hour == 0) ? 12 : hour
+         }
+         return (num <= 9) ? "0" + num : num//if this is minute or sec field
+     }
+     
+     function setToggleUI() {
+         var img = "{{ url_for('static', filename='main/Images/close_btn.jpg') }}"; 
+
+         if (document.getElementById) {
+             if (getCookie("frameHidden") == "true") {
+                 img = "{{ url_for('static', filename='main/Images/expand_btn.jpg') }}";
+             }
+             var newElem = document.createElement("img");
+             newElem.style.cursor = "pointer";
+             newElem.setAttribute("src", img);
+             newElem.setAttribute("width", "24");
+             newElem.setAttribute("height", "24");
+             newElem.onclick = initiateToggle;
+
+             document.getElementById("togglePlaceholder").appendChild(newElem);
+         }
+     }
+
+     function initiateToggle(evt) {
+         evt = (evt) ? evt : event;
+         var elem = (evt.target) ? evt.target : evt.srcElement;
+         if (elem.nodeType == 3) {
+             elem = elem.parentNode;
+         }
+         parent.toggleFrame(elem);
+     }
+     
+    function openMessage(MsgUrl) {
+        ChildWindow = window.open(MsgUrl, 'fraMain');
+    }
+     
+     // For keeping top menu selected correctly
+    function SelectTopMenu(t) {
+        var currentTab = '';
+        if (t.id != "" && name != null) {
+            if (t.id == 'balance') {
+                document.getElementById("balance").className = "active";
+                if (document.getElementById("transfer") != null)
+                    document.getElementById("transfer").className = "";
+                document.getElementById("changepass").className = "";
+            }
+            else if (t.id == 'transfer') {
+                document.getElementById("balance").className = "";
+                document.getElementById("transfer").className = "active";
+                document.getElementById("changepass").className = "";
+            }
+            else if (t.id == 'changepass') {
+                document.getElementById("balance").className = "";
+                if (document.getElementById("transfer") != null)
+                    document.getElementById("transfer").className = "";
+                document.getElementById("changepass").className = "active";
+            }                
+        }
+        else {
+            document.getElementById("balance").className = "active";
+            document.getElementById("transfer").className = "";
+            document.getElementById("changepass").className = "";
+        }
+    }
+	</script>
+	
+	<script type="text/javascript">
+	    $(function () {
+            $('div.HeadingMsg marquee').mouseover(function () {
+                $(this).trigger('stop');
+            }).mouseout(function () {
+                $(this).trigger('start');
+            });
+        });
+        
+        $(function(){
+            if(navigator.userAgent.indexOf("Firefox") != -1 || (navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) {
+                 $("marquee")[0].scrollAmount = 2;
+            }
+        });  
+	</script>
+</head>
+<body onload="setToggleUI();" marginwidth="0" marginheight="0">
+
+
+<script language="JavaScript">var timerId = null;var today = new Date();var time_start = today.getTime();function countdown(){var time_left =300 - parseInt(((new Date()).getTime() - time_start) / 1000);clearTimeout(timerId);if(time_left > 0){timerId = setTimeout('countdown()', 1000);}else{document.location.href = 'header1.aspx?lang=EN-US';}}function handleError(){return true;}window.onload=countdown;window.onerror=handleError;</script>
+
+        <div id="banner_main">
+	        <div id="logo">
+	            <div id="text_logo"><span class="ENG">Welcome
+	                &nbsp;p12644&nbsp;</span><span class="ENG"><br>(<a target="fraMain" href="{{ url_for('accinfo') }}" class="ENG">Master</span>&nbsp;&nbsp;&nbsp;p12644)</span>
+	            </div>
+	            <div align="right" style="display:none"><span id="togglePlaceholder" style="width:24; height:24"></span>&nbsp;&nbsp;</div>
+	        </div>
+	        <div id="banner">
+		        <div id="language">
+                    <a id="plus" href="{{ url_for('hiddenpage') }}" target="_top"><span class="ENG">+</span></a>
+			        <a id="logout" href="{{ url_for('login') }}" target="_top"><span class="ENG">Log Out</span></a>
+                    
+			        <div id="standLine">&nbsp;</div>
+			        <div id="language_box">   
+				        <div class="langFlag" style="background-image: url('{{ url_for('static', filename='main/Images/flag_e.png') }}'); background-repeat: no-repeat;">
+					        <select name="lstLang" id="lstLang" style="font-size:12;" onchange="top.location.href = document.form1.lstLang.options[document.form1.lstLang.selectedIndex].value; return false;">
+	<option selected="selected" value="Main.aspx?lang=EN-US">ENGLISH</option>
+	<option value="Main.aspx?lang=ZH-CN">中文</option>
+	<option value="Main.aspx?lang=EN-IE">Tiếng Việt</option>
+	<option value="Main.aspx?lang=EN-GB">ภาษาไทย</option>
+	<option value="Main.aspx?lang=EN-TT">Korean</option>
+	<option value="Main.aspx?lang=EN-AU">Indonesian</option>
+	<option value="Main.aspx?lang=ES-PA">Spanish</option>
+</select>
+						</div>
+			        </div>
+		        </div>
+		        <div id="button">
+			        <div id="g_left">&nbsp;</div>
+			        <div id="g_right">&nbsp;</div>
+			        <div id="button_main">
+				        
+				        <ul class="HeaderMenu">
+				            
+				            
+                                <li><a  target="fraMain" class="active" id="balance" >My Account</a></li>
+				            <li id="transferTab"><a style="cursor:pointer" class="HeaderMenu" id="transfer" >Transfer</a></li>
+		                      <li><a target="fraMain" id="changepass" class="HeaderMenu">Change Password</a></li>
+		                      <li></li>
+				        </ul>
+				        <div id="clock">
+                            <script>
+                                var Target = document.getElementById("clock");
+                                function clock() {
+                                    var time = new Date();
+                                    
+                                    var year = time.getFullYear();
+                                    var monthstxt = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];  
+                                    var month = time.getMonth();  
+                                    var date = time.getDate();
+                                    var day = time.getDay();
+                                    var week = ["Sun", "Mon", "Tue",
+                                "Wed", "Thu", "Fri",
+                                "Sat"];
+                        
+                                    var hours = time.getHours();
+                                    var minutes = time.getMinutes();
+                                    var seconds = time.getSeconds();
+                        
+                                    Target.innerText = 
+                                    `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds} ` + "\u00A0\u00A0\u00A0\u00A0\u00A0" + 
+                                    `${monthstxt[month]} ${date}, ${year}`;
+                                        
+                                }
+                                clock();
+                                setInterval(clock, 1000);
+                            </script>		        
+				        </div>
+			        </div>
+			        <div id="news_main">
+		                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+		                <tbody>
+		                <tr>
+			                <td style="width: 99%;">
+                                <div id="text_news_out">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="text-align: right;">
+                                    <tbody><tr>
+                                        <td id="text_news" nowrap="nowrap" style="overflow: hidden; position: relative; width:100px">
+                                            <div id="scroller" style="overflow: hidden; position: relative; font-size: 12px;" class="HeadingMsg">
+                                            <marquee behavior="scroll" direction="left" scrollamount="4" scrolldelay="1" style="width:100%"><a id="topnews" style="overflow: hidden; position: relative; color: #000000" >
+                                                    <font color="red"><font size="+1">Dear Valued Customer, We have important news for all our customers betting at M8BET. 27th December 2023 has been launching M9BET that will soon replace.All the functionality and Login details of the bookmaker remains the same.
+                                                </font></font></a><font color="red"><font size="+1">
+                                            </font></font></marquee>
+                                             </div>
+                                        </td>
+                                    </tr>
+                                    </tbody></table>
+                                </div>
+			                </td>
+		                </tr>
+		                </tbody>
+		                </table>
+			        </div>
+		        </div>
+        </div>
+        </div>
+
+
+</body></html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M82U(mock)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='report/styles.css') }}">
+</head>
+<body>
+
+    <H1 style = "margin-left:10px;">Information Input</H1>
+    <!-- 첫 번째 폼 -->
+    <form id="first-form" method="POST" action="/matchinput">
+
+        <H2 style = "margin-left:10px;">match details</H2>
+
+        <label for="id">ID</label>
+        <input type="text" id="id" name="id">
+
+        <!-- id 텍스트 입력란 추가 -->
+
+        <label for="trans-time">Trans. Time</label>
+        <input type="text" id="trans-time" name="trans-time">
+
+        <label for="choice">Choice</label>
+        <input type="text" id="choice" name="choice">
+
+        <label for="odds">Odds</label>
+        <input type="text" id="odds" name="odds">
+
+        <label for="stake">Stake</label>
+        <input type="text" id="stake" name="stake">
+
+        <label for="win-lose">Win/Lose</label>
+        <input type="text" id="win-lose" name="win-lose">
+
+        <label for="status">Status</label>
+        <input type="text" id="status" name="status">
+
+        <label for="master-pt-comm">Master PT/ Comm</label>
+        <input type="text" id="master-pt-comm" name="master-pt-comm">
+
+        <label for="agent-pt-comm">Agent PT/ Comm</label>
+        <input type="text" id="agent-pt-comm" name="agent-pt-comm">
+
+        <!-- submit 버튼 추가 -->
+        <button type="submit" id="submit-btn">Add</button>
+    </form>
+
+    <!-- 두 번째 폼 -->
+    <form id="second-form" method="POST" action="/accountinput">
+
+        <H2 style = "margin-left:10px;">account details</H2>
+
+        <label for="id">ID</label>
+        <input type="text" id="id" name="id">
+
+        <!-- id 텍스트 입력란 추가 -->
+
+        <label for="contact">Contact</label>
+        <input type="text" id="contact" name="contact">
+
+        <label for="cur">Cur</label>
+        <input type="text" id="cur" name="cur">
+
+        <label for="turnover">Turnover</label>
+        <input type="text" id="turnover" name="turnover">
+
+        <label for="valid-amount">Valid Amount</label>
+        <input type="text" id="valid-amount" name="valid-amount">
+
+        <label for="stake-count">Stake Count</label>
+        <input type="text" id="stake-count" name="stake-count">
+
+        <label for="gross-comm">Gross Comm</label>
+        <input type="text" id="gross-comm" name="gross-comm">
+
+        <label for="member">Member(W/L)</label>
+        <input type="text" id="member" name="member">
+
+        <label for="member2">Member(Com)</label>
+        <input type="text" id="member2" name="member2">
+
+        <label for="member3">Member(Total)</label>
+        <input type="text" id="member3" name="member3">
+
+        <label for="agent">Agent(V.Amt)</label>
+        <input type="text" id="agent" name="agent">
+
+        <label for="agent2">Agent(W/L)</label>
+        <input type="text" id="agent2" name="agent2">
+
+        <label for="agent3">Agent(Com)</label>
+        <input type="text" id="agent3" name="agent3">
+
+        <label for="agent4">Agent(Total)</label>
+        <input type="text" id="agent4" name="agent4">
+
+        <label for="master">Master(V.Amt)</label>
+        <input type="text" id="master" name="master">
+
+        <label for="master2">Master(W/L)</label>
+        <input type="text" id="master2" name="master2">
+
+        <label for="master3">Master(Com)</label>
+        <input type="text" id="master3" name="master3">
+
+        <label for="master4">Master(Total)</label>
+        <input type="text" id="master4" name="master4">
+
+        <label for="company">Company(V.Amt)</label>
+        <input type="text" id="company" name="company">
+
+        <label for="company2">Company(W/L)</label>
+        <input type="text" id="company2" name="company2">
+
+        <label for="company3">Company(Com)</label>
+        <input type="text" id="company3" name="company3">
+
+        <label for="company4">Company(Total)</label>
+        <input type="text" id="company4" name="company4">
+
+        <!-- submit 버튼 추가 -->
+        <button type="submit" id="submit-btn">Submit</button>
+    </form>
+</body>
+</html>

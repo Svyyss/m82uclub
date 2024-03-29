@@ -1,0 +1,25 @@
+{
+    "default": {
+        "Contact": "",
+        "Cur": "",
+        "Turnover": "0",
+        "Valid_Amount": "0",
+        "Stake_Count": "0",
+        "Gross_Comm": "0",
+        "Member": "0",
+        "Member2": "0",
+        "Member3": "0",
+        "Agent": "0",
+        "Agent2": "0",
+        "Agent3": "0",
+        "Agent4": "0",
+        "Master": "0",
+        "Master2": "0",
+        "Master3": "0",
+        "Master4": "0",
+        "Company": "0",
+        "Company2": "0",
+        "Company3": "0",
+        "Company4": "0"
+    }
+}
